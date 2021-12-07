@@ -15,7 +15,7 @@ Desenvolver uma aplicação para ser utilizada como apoio a visualização de pr
 
 ## Padrões de nomenclatura
 
-### branch
+### Branch
 - Inglês
 - Numeração para relacionar task do Trello
 - Utilizar tags para identificar branch (Exemplo: Feat: A new feature)
