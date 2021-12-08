@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-///////////////////////////////////////////
 using System.ComponentModel.DataAnnotations;
 
 namespace BloodCheck.Models;
@@ -24,7 +23,7 @@ public class BloodCheckContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
+        // database scheme
         modelBuilder.Entity<Exam>()
             .ToTable("Exams")
             .HasKey(t => t.examId)
@@ -94,14 +93,84 @@ public class BloodCheckContext : DbContext
             .Property(t => t.requestDate)
             .HasColumnName("requestDate")
             .HasColumnType("date");
-                  
-    
+
         // n to n RequestExam
         modelBuilder.Entity<Request>()
             .HasMany(e => e.Exams)
             .WithMany(e => e.Requests)
             .UsingEntity<RequestExam>();
 
+        // inserts in doctors (15 doctors)
+        modelBuilder.Entity<Doctor>().HasData(
+            new Doctor { doctorId = 1, crm = "143523", name = "Julia" },
+            new Doctor { doctorId = 2, crm = "444444", name = "Alice" },
+            new Doctor { doctorId = 3, crm = "309345", name = "Arthur" },
+            new Doctor { doctorId = 4, crm = "940481", name = "Yasmin" },
+            new Doctor { doctorId = 5, crm = "482345", name = "Jorge" },
+            new Doctor { doctorId = 6, crm = "935612", name = "Ronaldo" },
+            new Doctor { doctorId = 7, crm = "277077", name = "Cleide" },
+            new Doctor { doctorId = 8, crm = "761161", name = "Clarissa" },
+            new Doctor { doctorId = 9, crm = "292392", name = "Joao" },
+            new Doctor { doctorId = 10, crm = "545454", name = "Vitor" },
+            new Doctor { doctorId = 11, crm = "723456", name = "Gustavo" },
+            new Doctor { doctorId = 12, crm = "111111", name = "Elise" },
+            new Doctor { doctorId = 13, crm = "334345", name = "Paulo" },
+            new Doctor { doctorId = 14, crm = "934594", name = "Godofreda" },
+            new Doctor { doctorId = 15, crm = "869233", name = "Elias" }
+        );
+        
+         // inserts in patients (15 pacients)
+         modelBuilder.Entity<Patient>().HasData(
+             new Patient{ patientId = 1, name = "Walmir", cpf = "12345678911", phone = "5195483921" },
+             new Patient{ patientId = 2, name = "Rudinei", cpf = "12345678911", phone = "5118432950" },
+             new Patient{ patientId = 3, name = "Amanda", cpf = "32215177721", phone = "5114345940" },
+             new Patient{ patientId = 4, name = "Lucio", cpf = "47397069483", phone = "5111111111" },
+             new Patient{ patientId = 5, name = "Otavio", cpf = "11122233344", phone = "51968667432" },
+             new Patient{ patientId = 6, name = "Luiza", cpf = "10594837474", phone = "51934663543" },
+             new Patient{ patientId = 7, name = "Bruno", cpf = "47121131518", phone = "5130303030" },
+             new Patient{ patientId = 8, name = "Junior", cpf = "58493067251", phone = "5100000001" },
+             new Patient{ patientId = 9, name = "Pedro", cpf = "69705847362", phone = "5123456780" },
+             new Patient{ patientId = 10, name = "Lucas", cpf = "11000111010", phone = "51999347589" },
+             new Patient{ patientId = 11, name = "Carol", cpf = "31415926535", phone = "51999323214" },
+             new Patient{ patientId = 12, name = "William", cpf = "27182818284", phone = "51923142134" },
+             new Patient{ patientId = 13, name = "Beatriz", cpf = "12347658761", phone = "51940028922" },
+             new Patient{ patientId = 14, name = "Maria", cpf = "9638527410", phone = "51985209630" },
+             new Patient{ patientId = 15, name = "Antoniela", cpf = "32165498736", phone = "51978945612" }
+         );
 
+        // insert in exams (30 exams)
+        modelBuilder.Entity<Exam>().HasData(
+            new Exam{examId = 1, price = 5.77M, description ="TTA - TEMPO DE TROMBOPLASTINA ATIVADA" , deliveryDays = 2},
+            new Exam{examId = 2, price = 1.85M, description ="DAU - DOSAGEM DE ACIDO URICO" , deliveryDays = 3},
+            new Exam{examId = 3, price = 3.68M, description ="DAG - DOSAGEM DE ALFA-1-GLICOPROTEINA ACIDA" , deliveryDays = 3},
+            new Exam{examId = 4, price = 2.25M, description ="DAL - DOSAGEM DE AMILASE" , deliveryDays = 7},
+            new Exam{examId = 5, price = 2.01M, description ="DBTF - DOSAGEM DE BILIRRUBINA TOTAL E FRACOES" , deliveryDays = 5},
+            new Exam{examId = 6, price = 1.85M, description ="DC - DOSAGEM DE CALCIO" , deliveryDays = 12},
+            new Exam{examId = 7, price = 3.68M, description ="DAA - DOSAGEM DE ALFA-1-GLICOPROTEINA ACIDA" , deliveryDays = 2},
+            new Exam{examId = 8, price = 1.85M, description ="DDS - DOSAGEM DE SODIO" , deliveryDays = 1},
+            new Exam{examId = 9, price = 12.54M, description ="DIT - DETERMINACAO DE INDICE DE TIROXINA LIVRE" , deliveryDays = 6},
+            new Exam{examId = 10, price = 9.00M , description ="DSI - DETERMINACAO DE TEMPO DE SANGRAMENTO DE IVY" , deliveryDays = 8},
+            new Exam{examId = 11, price = 16.97M, description ="PAIA - PESQUISA DE ANTICORPOS IGG ANTITOXOPLASMA" , deliveryDays = 3},
+            new Exam{examId = 12, price = 1.53M, description ="DDH - DOSAGEM DE HEMOGLOBINA" , deliveryDays = 4},
+            new Exam{examId = 13, price = 2.83M, description ="DFR - DETERMINACAO DE FATOR REUMATOIDE" , deliveryDays = 6},
+            new Exam{examId = 14, price = 3.93M, description ="DPR - DOSAGEM DE PROTEINA C REATIVA" , deliveryDays = 1},
+            new Exam{examId = 15, price = 10.00M, description ="TFS - TESTE FTA-ABS IGG P/ DIAGNOSTICO DA SIFIL" , deliveryDays = 5},
+            new Exam{examId = 16, price = 18.55M, description ="PAI - PESQUISA DE ANTICORPOS IGM ANTITOXOPLASM" , deliveryDays = 13}
+            // new Exam{examId = 17, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 18, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 19, price = , description ="", deliveryDays = },
+            // new Exam{examId = 20, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 21, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 22, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 23, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 24, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 25, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 26, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 27, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 28, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 29, price = , description ="" , deliveryDays = },
+            // new Exam{examId = 30, price = , description ="" , deliveryDays = },
+        );
+        
     }
 }

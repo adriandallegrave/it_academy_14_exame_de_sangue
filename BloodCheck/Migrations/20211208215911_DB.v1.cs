@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BloodCheck.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class DBv1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -102,6 +102,80 @@ namespace BloodCheck.Migrations
                         principalTable: "Requests",
                         principalColumn: "requestId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Doctors",
+                columns: new[] { "doctorId", "crm", "name" },
+                values: new object[,]
+                {
+                    { 1, "143523", "Julia" },
+                    { 2, "444444", "Alice" },
+                    { 3, "309345", "Arthur" },
+                    { 4, "940481", "Yasmin" },
+                    { 5, "482345", "Jorge" },
+                    { 6, "935612", "Ronaldo" },
+                    { 7, "277077", "Cleide" },
+                    { 8, "761161", "Clarissa" },
+                    { 9, "292392", "Joao" },
+                    { 10, "545454", "Vitor" },
+                    { 11, "723456", "Gustavo" },
+                    { 12, "111111", "Elise" },
+                    { 13, "334345", "Paulo" },
+                    { 14, "934594", "Godofreda" },
+                    { 15, "869233", "Elias" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Exams",
+                columns: new[] { "examId", "deliveryDays", "description", "price" },
+                values: new object[,]
+                {
+                    { 1, 2m, "TTA - TEMPO DE TROMBOPLASTINA ATIVADA", 5.77m },
+                    { 2, 3m, "DAU - DOSAGEM DE ACIDO URICO", 1.85m },
+                    { 3, 3m, "DAG - DOSAGEM DE ALFA-1-GLICOPROTEINA ACIDA", 3.68m },
+                    { 4, 7m, "DAL - DOSAGEM DE AMILASE", 2.25m },
+                    { 5, 5m, "DBTF - DOSAGEM DE BILIRRUBINA TOTAL E FRACOES", 2.01m },
+                    { 6, 12m, "DC - DOSAGEM DE CALCIO", 1.85m },
+                    { 7, 2m, "DAA - DOSAGEM DE ALFA-1-GLICOPROTEINA ACIDA", 3.68m },
+                    { 8, 1m, "DDS - DOSAGEM DE SODIO", 1.85m },
+                    { 9, 6m, "DIT - DETERMINACAO DE INDICE DE TIROXINA LIVRE", 12.54m },
+                    { 10, 8m, "DSI - DETERMINACAO DE TEMPO DE SANGRAMENTO DE IVY", 9.00m },
+                    { 11, 3m, "PAIA - PESQUISA DE ANTICORPOS IGG ANTITOXOPLASMA", 16.97m },
+                    { 12, 4m, "DDH - DOSAGEM DE HEMOGLOBINA", 1.53m },
+                    { 13, 6m, "DFR - DETERMINACAO DE FATOR REUMATOIDE", 2.83m },
+                    { 14, 1m, "DPR - DOSAGEM DE PROTEINA C REATIVA", 3.93m },
+                    { 15, 5m, "TFS - TESTE FTA-ABS IGG P/ DIAGNOSTICO DA SIFIL", 10.00m },
+                    { 16, 13m, "PAI - PESQUISA DE ANTICORPOS IGM ANTITOXOPLASM", 18.55m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Patients",
+                columns: new[] { "patientId", "cpf", "name", "phone" },
+                values: new object[,]
+                {
+                    { 1, "12345678911", "Walmir", "5195483921" },
+                    { 2, "12345678911", "Rudinei", "5118432950" },
+                    { 3, "32215177721", "Amanda", "5114345940" },
+                    { 4, "47397069483", "Lucio", "5111111111" },
+                    { 5, "11122233344", "Otavio", "51968667432" },
+                    { 6, "10594837474", "Luiza", "51934663543" },
+                    { 7, "47121131518", "Bruno", "5130303030" },
+                    { 8, "58493067251", "Junior", "5100000001" },
+                    { 9, "69705847362", "Pedro", "5123456780" },
+                    { 10, "11000111010", "Lucas", "51999347589" },
+                    { 11, "31415926535", "Carol", "51999323214" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Patients",
+                columns: new[] { "patientId", "cpf", "name", "phone" },
+                values: new object[,]
+                {
+                    { 12, "27182818284", "William", "51923142134" },
+                    { 13, "12347658761", "Beatriz", "51940028922" },
+                    { 14, "9638527410", "Maria", "51985209630" },
+                    { 15, "32165498736", "Antoniela", "51978945612" }
                 });
 
             migrationBuilder.CreateIndex(
