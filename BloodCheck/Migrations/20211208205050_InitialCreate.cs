@@ -20,7 +20,7 @@ namespace BloodCheck.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("id Doctors", x => x.doctorId);
+                    table.PrimaryKey("doctorId", x => x.doctorId);
                 });
 
             migrationBuilder.CreateTable(
@@ -35,7 +35,7 @@ namespace BloodCheck.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("Id Exam", x => x.examId);
+                    table.PrimaryKey("ExamId", x => x.examId);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,7 +50,7 @@ namespace BloodCheck.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("id Patients", x => x.patientId);
+                    table.PrimaryKey("patientId", x => x.patientId);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,13 +59,13 @@ namespace BloodCheck.Migrations
                 {
                     requestId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    patientId = table.Column<decimal>(type: "numeric(4)", nullable: false),
-                    doctorId = table.Column<decimal>(type: "numeric(4)", nullable: false),
+                    patientId = table.Column<int>(type: "int", nullable: false),
+                    doctorId = table.Column<int>(type: "int", nullable: false),
                     requestDate = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("id Requests", x => x.requestId);
+                    table.PrimaryKey("requestId", x => x.requestId);
                     table.ForeignKey(
                         name: "FK_Requests_Doctors_doctorId",
                         column: x => x.doctorId,
@@ -112,14 +112,12 @@ namespace BloodCheck.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Requests_doctorId",
                 table: "Requests",
-                column: "doctorId",
-                unique: true);
+                column: "doctorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Requests_patientId",
                 table: "Requests",
-                column: "patientId",
-                unique: true);
+                column: "patientId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

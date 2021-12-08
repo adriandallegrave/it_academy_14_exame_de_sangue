@@ -41,7 +41,7 @@ namespace BloodCheck.Migrations
                         .HasColumnName("name");
 
                     b.HasKey("doctorId")
-                        .HasName("id Doctors");
+                        .HasName("doctorId");
 
                     b.ToTable("Doctors", (string)null);
                 });
@@ -67,7 +67,7 @@ namespace BloodCheck.Migrations
                         .HasColumnName("price");
 
                     b.HasKey("examId")
-                        .HasName("Id Exam");
+                        .HasName("ExamId");
 
                     b.ToTable("Exams", (string)null);
                 });
@@ -96,7 +96,7 @@ namespace BloodCheck.Migrations
                         .HasColumnName("phone");
 
                     b.HasKey("patientId")
-                        .HasName("id Patients");
+                        .HasName("patientId");
 
                     b.ToTable("Patients", (string)null);
                 });
@@ -109,12 +109,12 @@ namespace BloodCheck.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("requestId"), 1L, 1);
 
-                    b.Property<decimal>("doctorId")
-                        .HasColumnType("numeric(4)")
+                    b.Property<int>("doctorId")
+                        .HasColumnType("int")
                         .HasColumnName("doctorId");
 
-                    b.Property<decimal>("patientId")
-                        .HasColumnType("numeric(4)")
+                    b.Property<int>("patientId")
+                        .HasColumnType("int")
                         .HasColumnName("patientId");
 
                     b.Property<DateTime>("requestDate")
@@ -122,13 +122,11 @@ namespace BloodCheck.Migrations
                         .HasColumnName("requestDate");
 
                     b.HasKey("requestId")
-                        .HasName("id Requests");
+                        .HasName("requestId");
 
-                    b.HasIndex("doctorId")
-                        .IsUnique();
+                    b.HasIndex("doctorId");
 
-                    b.HasIndex("patientId")
-                        .IsUnique();
+                    b.HasIndex("patientId");
 
                     b.ToTable("Requests", (string)null);
                 });
@@ -150,17 +148,21 @@ namespace BloodCheck.Migrations
 
             modelBuilder.Entity("BloodCheck.Models.Request", b =>
                 {
-                    b.HasOne("BloodCheck.Models.Doctor", null)
-                        .WithOne("Request")
-                        .HasForeignKey("BloodCheck.Models.Request", "doctorId")
+                    b.HasOne("BloodCheck.Models.Doctor", "Doctor")
+                        .WithMany("Requests")
+                        .HasForeignKey("doctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BloodCheck.Models.Patient", null)
-                        .WithOne("Request")
-                        .HasForeignKey("BloodCheck.Models.Request", "patientId")
+                    b.HasOne("BloodCheck.Models.Patient", "Patient")
+                        .WithMany("Requests")
+                        .HasForeignKey("patientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("BloodCheck.Models.RequestExam", b =>
@@ -184,8 +186,7 @@ namespace BloodCheck.Migrations
 
             modelBuilder.Entity("BloodCheck.Models.Doctor", b =>
                 {
-                    b.Navigation("Request")
-                        .IsRequired();
+                    b.Navigation("Requests");
                 });
 
             modelBuilder.Entity("BloodCheck.Models.Exam", b =>
@@ -195,8 +196,7 @@ namespace BloodCheck.Migrations
 
             modelBuilder.Entity("BloodCheck.Models.Patient", b =>
                 {
-                    b.Navigation("Request")
-                        .IsRequired();
+                    b.Navigation("Requests");
                 });
 
             modelBuilder.Entity("BloodCheck.Models.Request", b =>

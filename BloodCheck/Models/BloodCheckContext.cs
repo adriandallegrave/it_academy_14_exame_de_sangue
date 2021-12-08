@@ -28,7 +28,7 @@ public class BloodCheckContext : DbContext
         modelBuilder.Entity<Exam>()
             .ToTable("Exams")
             .HasKey(t => t.examId)
-            .HasName("Id Exam");
+            .HasName("ExamId");
         modelBuilder.Entity<Exam>()
             .Property(t => t.price)
             .HasColumnName("price")
@@ -45,7 +45,7 @@ public class BloodCheckContext : DbContext
         modelBuilder.Entity<Patient>()
             .ToTable("Patients")
             .HasKey(t => t.patientId)
-            .HasName("id Patients");
+            .HasName("patientId");
         modelBuilder.Entity<Patient>()
             .Property(t => t.name)
             .HasColumnName("name")
@@ -65,7 +65,8 @@ public class BloodCheckContext : DbContext
         modelBuilder.Entity<Doctor>()
             .ToTable("Doctors")
             .HasKey(t => t.doctorId)
-            .HasName("id Doctors");
+            .HasName("doctorId");
+            //.HasColumnType("numeric(4)");
         modelBuilder.Entity<Doctor>()
             .Property(t => t.crm)
             .HasColumnName("crm")
@@ -80,15 +81,15 @@ public class BloodCheckContext : DbContext
         modelBuilder.Entity<Request>()
             .ToTable("Requests")
             .HasKey(t => t.requestId)
-            .HasName("id Requests");
+            .HasName("requestId");
         modelBuilder.Entity<Request>()
             .Property(t => t.patientId)
-            .HasColumnName("patientId")
-            .HasColumnType("numeric(4)");
+            .HasColumnName("patientId");
+            //.HasColumnType("numeric(4)");
         modelBuilder.Entity<Request>()
             .Property(t => t.doctorId)
-            .HasColumnName("doctorId")
-            .HasColumnType("numeric(4)");
+            .HasColumnName("doctorId");
+            //.HasColumnType("numeric(4)");
         modelBuilder.Entity<Request>()
             .Property(t => t.requestDate)
             .HasColumnName("requestDate")
@@ -100,5 +101,7 @@ public class BloodCheckContext : DbContext
             .HasMany(e => e.Exams)
             .WithMany(e => e.Requests)
             .UsingEntity<RequestExam>();
+
+
     }
 }
