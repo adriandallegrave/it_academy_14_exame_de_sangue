@@ -1,7 +1,9 @@
 namespace BloodCheck.Models;
 
-public class Patient{
+public class Patient
+{
+    public int idPatient {get; set;}
     public string? name {get; set;}
-    public char[] cpf {get; set;}
-    public char[] phone {get; set;}
-}    
+    public string? cpf {get; set;}
+    public string? phone {get; set;}
+}
