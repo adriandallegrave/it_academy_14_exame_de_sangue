@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+///////////////////////////////////////////
+using System.ComponentModel.DataAnnotations;
 
 namespace BloodCheck.Models;
 
@@ -17,15 +19,16 @@ public class BloodCheckContext : DbContext
     public DbSet<Patient> Patients {get; set;} = null!;
     public DbSet<Doctor> Doctors {get; set;} = null!;
     public DbSet<Exam> Exams {get; set;} = null!;
-    public DbSet<Request> Request {get; set;} = null!;
+    public DbSet<Request> Requests {get; set;} = null!;
+    public DbSet<RequestExam> RequestExams {get; set;} = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
         modelBuilder.Entity<Exam>()
             .ToTable("Exams")
-            .HasKey(t => t.idExam)
-            .HasName("idExam");
+            .HasKey(t => t.examId)
+            .HasName("Id Exam");
         modelBuilder.Entity<Exam>()
             .Property(t => t.price)
             .HasColumnName("price")
@@ -41,49 +44,61 @@ public class BloodCheckContext : DbContext
 
         modelBuilder.Entity<Patient>()
             .ToTable("Patients")
-            .HasKey(t => t.idPatient)
+            .HasKey(t => t.patientId)
             .HasName("id Patients");
         modelBuilder.Entity<Patient>()
             .Property(t => t.name)
             .HasColumnName("name")
-            .HasColumnType("varchar(50)");
+            .HasColumnType("varchar(50)")
+            .IsRequired();
         modelBuilder.Entity<Patient>()
             .Property(t => t.cpf)
             .HasColumnName("cpf")
-            .HasColumnType("varchar(11)");
+            .HasColumnType("char(11)")
+            .IsRequired();
         modelBuilder.Entity<Patient>()
             .Property(t => t.phone)
             .HasColumnName("phone")
-            .HasColumnType("varchar(11)");
+            .HasColumnType("varchar(11)")
+            .IsRequired();
 
         modelBuilder.Entity<Doctor>()
             .ToTable("Doctors")
-            .HasKey(t => t.idDoctor)
+            .HasKey(t => t.doctorId)
             .HasName("id Doctors");
         modelBuilder.Entity<Doctor>()
             .Property(t => t.crm)
             .HasColumnName("crm")
-            .HasColumnType("char(6)");
+            .HasColumnType("char(6)")
+            .IsRequired();
         modelBuilder.Entity<Doctor>()
             .Property(t => t.name)
             .HasColumnName("name")
-            .HasColumnType("varchar(50)");
+            .HasColumnType("varchar(50)")
+            .IsRequired();
         
         modelBuilder.Entity<Request>()
             .ToTable("Requests")
-            .HasKey(t => new {t.idRequest, t.idPatient, t.idDoctor})
+            .HasKey(t => t.requestId)
             .HasName("id Requests");
         modelBuilder.Entity<Request>()
-            .Property(t => t.idPatient)
-            .HasColumnName("idPatient")
+            .Property(t => t.patientId)
+            .HasColumnName("patientId")
             .HasColumnType("numeric(4)");
         modelBuilder.Entity<Request>()
-            .Property(t => t.idDoctor)
-            .HasColumnName("idDoctor")
+            .Property(t => t.doctorId)
+            .HasColumnName("doctorId")
             .HasColumnType("numeric(4)");
         modelBuilder.Entity<Request>()
             .Property(t => t.requestDate)
             .HasColumnName("requestDate")
             .HasColumnType("date");
+                  
+    
+        // n to n RequestExam
+        modelBuilder.Entity<Request>()
+            .HasMany(e => e.Exams)
+            .WithMany(e => e.Requests)
+            .UsingEntity<RequestExam>();
     }
 }
