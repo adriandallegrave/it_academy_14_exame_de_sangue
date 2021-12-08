@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:blood_check/components/patient_data.dart';
+
 class NewRequisition extends StatefulWidget {
   const NewRequisition({Key? key}) : super(key: key);
 
@@ -21,38 +23,7 @@ class _NewRequisitionState extends State<NewRequisition> {
         body: Container(
             padding: const EdgeInsets.all(40),
             child: Wrap(children: <Widget>[
-              Container(
-                  //Container de informações do paciente
-                  margin: EdgeInsets.all(16),
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    border: Border.all(),
-                    borderRadius: BorderRadius.all(Radius.circular(3)),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 8),
-                        ),
-                        Text('Nome'),
-                      ]),
-                      Row(children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 8),
-                        ),
-                        Text('CPF'),
-                      ]),
-                      Row(children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 8),
-                        ),
-                        Text('Telefone'),
-                      ]),
-                    ],
-                  )),
+              PatientData(),
               Container(
                   child: Column(
                       // Requisicao
