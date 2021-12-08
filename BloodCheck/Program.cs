@@ -7,6 +7,10 @@ using BloodCheck.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<BloodCheckContext>(options => {
+	options.UseSqlServer("name=ConnectionStrings:DefaultConnection");
+	options.LogTo(Console.WriteLine).EnableSensitiveDataLogging();
+});
 
 /*builder.Services.AddDbContext<BdContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DafaultConnection"));
