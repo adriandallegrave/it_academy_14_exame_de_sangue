@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BloodCheck.Migrations
 {
     [DbContext(typeof(BloodCheckContext))]
-    [Migration("20211209165924_InitialCreate")]
+    [Migration("20211209193750_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
