@@ -30,7 +30,7 @@ namespace BloodCheck.Migrations
                     examId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     price = table.Column<decimal>(type: "numeric(5,2)", nullable: false),
-                    description = table.Column<string>(type: "varchar(255)", nullable: true),
+                    description = table.Column<string>(type: "varchar(255)", nullable: false),
                     deliveryDays = table.Column<decimal>(type: "numeric(2)", nullable: false)
                 },
                 constraints: table =>

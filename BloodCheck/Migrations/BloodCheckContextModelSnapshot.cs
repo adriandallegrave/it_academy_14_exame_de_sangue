@@ -154,6 +154,7 @@ namespace BloodCheck.Migrations
                         .HasColumnName("deliveryDays");
 
                     b.Property<string>("description")
+                        .IsRequired()
                         .HasColumnType("varchar(255)")
                         .HasColumnName("description");
 

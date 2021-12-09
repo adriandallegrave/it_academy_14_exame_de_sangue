@@ -36,7 +36,8 @@ public class BloodCheckContext : DbContext
         modelBuilder.Entity<Exam>()
             .Property(t => t.description)
             .HasColumnName("description")
-            .HasColumnType("varchar(255)");
+            .HasColumnType("varchar(255)")
+            .IsRequired();
         modelBuilder.Entity<Exam>()
             .Property(t => t.deliveryDays)
             .HasColumnName("deliveryDays")

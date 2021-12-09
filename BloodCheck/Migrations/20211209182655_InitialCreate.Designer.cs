@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BloodCheck.Migrations
 {
     [DbContext(typeof(BloodCheckContext))]
-    [Migration("20211209165924_InitialCreate")]
+    [Migration("20211209182655_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -156,6 +156,7 @@ namespace BloodCheck.Migrations
                         .HasColumnName("deliveryDays");
 
                     b.Property<string>("description")
+                        .IsRequired()
                         .HasColumnType("varchar(255)")
                         .HasColumnName("description");
 
