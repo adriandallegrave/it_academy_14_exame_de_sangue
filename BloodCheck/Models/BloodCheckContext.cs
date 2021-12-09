@@ -128,7 +128,7 @@ public class BloodCheckContext : DbContext
         
          // Inserts in patients (15 pacients).
          modelBuilder.Entity<Patient>().HasData(
-             new Patient { patientId = 1, name = "Walmir", cpf = "12345678911", phone = "5195483921" },
+             new Patient { patientId = 1, name = "Walmir", cpf = "74341671920", phone = "5195483921" },
              new Patient { patientId = 2, name = "Rudinei", cpf = "12345678911", phone = "5118432950" },
              new Patient { patientId = 3, name = "Amanda", cpf = "32215177721", phone = "5114345940" },
              new Patient { patientId = 4, name = "Lucio", cpf = "47397069483", phone = "5111111111" },
@@ -178,6 +178,5 @@ public class BloodCheckContext : DbContext
             new Exam { examId = 29, price = 8.76M, description = "DT4 - DOSAGEM DE TIROXINA (T4)", deliveryDays = 11 },
             new Exam { examId = 30, price = 10.15M, description = "DES - DOSAGEM DE ESTRADIOL", deliveryDays = 6 }
         );
-        
     }
 }

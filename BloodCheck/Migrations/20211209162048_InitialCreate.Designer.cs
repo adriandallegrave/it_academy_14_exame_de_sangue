@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BloodCheck.Migrations
 {
     [DbContext(typeof(BloodCheckContext))]
-    [Migration("20211208215911_DB.v1")]
-    partial class DBv1
+    [Migration("20211209162048_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,9 @@ namespace BloodCheck.Migrations
 
                     b.HasKey("doctorId")
                         .HasName("doctorId");
+
+                    b.HasIndex("crm")
+                        .IsUnique();
 
                     b.ToTable("Doctors", (string)null);
 
@@ -198,14 +201,14 @@ namespace BloodCheck.Migrations
                         {
                             examId = 5,
                             deliveryDays = 5m,
-                            description = "DBTF - DOSAGEM DE BILIRRUBINA TOTAL E FRACOES",
+                            description = "DBF - DOSAGEM DE BILIRRUBINA TOTAL E FRACOES",
                             price = 2.01m
                         },
                         new
                         {
                             examId = 6,
                             deliveryDays = 12m,
-                            description = "DC - DOSAGEM DE CALCIO",
+                            description = "DCA - DOSAGEM DE CALCIO",
                             price = 1.85m
                         },
                         new
@@ -240,7 +243,7 @@ namespace BloodCheck.Migrations
                         {
                             examId = 11,
                             deliveryDays = 3m,
-                            description = "PAIA - PESQUISA DE ANTICORPOS IGG ANTITOXOPLASMA",
+                            description = "PAA - PESQUISA DE ANTICORPOS IGG ANTITOXOPLASMA",
                             price = 16.97m
                         },
                         new
@@ -277,6 +280,104 @@ namespace BloodCheck.Migrations
                             deliveryDays = 13m,
                             description = "PAI - PESQUISA DE ANTICORPOS IGM ANTITOXOPLASM",
                             price = 18.55m
+                        },
+                        new
+                        {
+                            examId = 17,
+                            deliveryDays = 5m,
+                            description = "DUR - DOSAGEM DE UREIA",
+                            price = 18.55m
+                        },
+                        new
+                        {
+                            examId = 18,
+                            deliveryDays = 3m,
+                            description = "DDP - DOSAGEM DE PROLACTINA",
+                            price = 10.15m
+                        },
+                        new
+                        {
+                            examId = 19,
+                            deliveryDays = 10m,
+                            description = "TDF - TESTE FTA-ABS IGG P/ DIAGNOSTICO DA SIFILIS",
+                            price = 10.00m
+                        },
+                        new
+                        {
+                            examId = 20,
+                            deliveryDays = 12m,
+                            description = "DDT - DOSAGEM DE TESTOSTERONA",
+                            price = 10.43m
+                        },
+                        new
+                        {
+                            examId = 21,
+                            deliveryDays = 8m,
+                            description = "ABG - ANTIBIOGRAMA",
+                            price = 4.98m
+                        },
+                        new
+                        {
+                            examId = 22,
+                            deliveryDays = 4m,
+                            description = "CDT - CONTAGEM DE RETICULOCITOS",
+                            price = 2.73m
+                        },
+                        new
+                        {
+                            examId = 23,
+                            deliveryDays = 3m,
+                            description = "PRH - PESQUISA DE FATOR RH (I",
+                            price = 1.37m
+                        },
+                        new
+                        {
+                            examId = 24,
+                            deliveryDays = 5m,
+                            description = "DFR - DOSAGEM DE FERRITINA",
+                            price = 15.59m
+                        },
+                        new
+                        {
+                            examId = 25,
+                            deliveryDays = 7m,
+                            description = "DFF - DOSAGEM DE FOSFORO",
+                            price = 1.85m
+                        },
+                        new
+                        {
+                            examId = 26,
+                            deliveryDays = 9m,
+                            description = "RHV - DETECCAO DE RNA DO HIV-1",
+                            price = 65.00m
+                        },
+                        new
+                        {
+                            examId = 27,
+                            deliveryDays = 3m,
+                            description = "HPC - PESQUISA DE ANTICORPOS CONTRA O VIRUS DA HEPATITE C (ANTI-HCV)",
+                            price = 18.55m
+                        },
+                        new
+                        {
+                            examId = 28,
+                            deliveryDays = 2m,
+                            description = "DT3 - DOSAGEM DE TRIIODOTIRONINA (T3)",
+                            price = 8.71m
+                        },
+                        new
+                        {
+                            examId = 29,
+                            deliveryDays = 11m,
+                            description = "DT4 - DOSAGEM DE TIROXINA (T4)",
+                            price = 8.76m
+                        },
+                        new
+                        {
+                            examId = 30,
+                            deliveryDays = 6m,
+                            description = "DES - DOSAGEM DE ESTRADIOL",
+                            price = 10.15m
                         });
                 });
 
@@ -306,13 +407,16 @@ namespace BloodCheck.Migrations
                     b.HasKey("patientId")
                         .HasName("patientId");
 
+                    b.HasIndex("cpf")
+                        .IsUnique();
+
                     b.ToTable("Patients", (string)null);
 
                     b.HasData(
                         new
                         {
                             patientId = 1,
-                            cpf = "12345678911",
+                            cpf = "74341671920",
                             name = "Walmir",
                             phone = "5195483921"
                         },
