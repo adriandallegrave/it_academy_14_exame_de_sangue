@@ -12,10 +12,6 @@ builder.Services.AddDbContext<BloodCheckContext>(options => {
 	options.LogTo(Console.WriteLine).EnableSensitiveDataLogging();
 });
 
-/*builder.Services.AddDbContext<BdContext>(options => {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DafaultConnection"));
-    options.LogTo(Console.WriteLine).EnableSensitiveDataLogging();
-});*/
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
