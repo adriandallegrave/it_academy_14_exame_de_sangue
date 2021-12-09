@@ -24,9 +24,6 @@ class _PatientDataState extends State<PatientData> {
         ),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Row(children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 8),
-            ),
             RichText(
               text: TextSpan(
                   text: 'Débora Sanchéz', //Insert name from DB here
@@ -37,9 +34,6 @@ class _PatientDataState extends State<PatientData> {
             )
           ]),
           Row(children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 8),
-            ),
             RichText(
                 text: TextSpan(children: <TextSpan>[
               TextSpan(
@@ -56,9 +50,6 @@ class _PatientDataState extends State<PatientData> {
             ]))
           ]),
           Row(children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 8),
-            ),
             RichText(
                 text: TextSpan(children: <TextSpan>[
               TextSpan(
