@@ -1,3 +1,4 @@
+import 'package:blood_check/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,36 +13,65 @@ class _PatientDataState extends State<PatientData> {
   @override
   Widget build(BuildContext context) {
     return Container(
-                  //Container de informações do paciente
-                  margin: EdgeInsets.all(16),
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    border: Border.all(),
-                    borderRadius: BorderRadius.all(Radius.circular(3)),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 8),
-                        ),
-                        Text('Nome'),
-                      ]),
-                      Row(children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 8),
-                        ),
-                        Text('CPF'),
-                      ]),
-                      Row(children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 8),
-                        ),
-                        Text('Telefone'),
-                      ]),
-                    ],
-                  )); // Scaffold
+        margin: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border.all(
+            color: Colors.transparent,
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(6)),
+        ),
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          Row(children: [
+            const Padding(
+              padding: EdgeInsets.only(right: 8),
+            ),
+            RichText(
+              text: TextSpan(
+                  text: 'Débora Sanchéz', //Insert name from DB here
+                  style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold)),
+            )
+          ]),
+          Row(children: [
+            const Padding(
+              padding: EdgeInsets.only(right: 8),
+            ),
+            RichText(
+                text: TextSpan(children: <TextSpan>[
+              TextSpan(
+                  text: 'CPF: ',
+                  style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: '811.886.999-20',
+                  style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 16)), //Insert 'CPF' from DB
+            ]))
+          ]),
+          Row(children: [
+            const Padding(
+              padding: EdgeInsets.only(right: 8),
+            ),
+            RichText(
+                text: TextSpan(children: <TextSpan>[
+              TextSpan(
+                  text: 'Telefone: ',
+                  style: TextStyle(
+                      color: kPrimaryColor, fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: '51 98169-3449',
+                  style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 12)), //Insert phone number from DB
+            ]))
+          ]),
+        ])); // Scaffold
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:blood_check/components/patient_data.dart';
+import 'package:blood_check/components/requisition_data.dart';
 
 class NewRequisition extends StatefulWidget {
   const NewRequisition({Key? key}) : super(key: key);
@@ -15,26 +16,16 @@ class _NewRequisitionState extends State<NewRequisition> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.blue[600],
           centerTitle: true,
           title: const Text('Blood Check',
-              style: TextStyle(fontSize: 40, color: Colors.white)),
+              style: TextStyle(fontSize: 24, color: Colors.white)),
         ),
         body: Container(
-            padding: const EdgeInsets.all(40),
-            child: Wrap(children: <Widget>[
-              PatientData(),
-              Container(
-                  child: Column(
-                      // Requisicao
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                    Text(
-                      'Nova Requisição',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    // Date Picker goes here
-                  ])) // Container
-            ]))); // Scaffold
+            //padding: const EdgeInsets.all(40),
+            child: Wrap(spacing: 8.0, runSpacing: 4.0, children: <Widget>[
+          PatientData(),
+          RequisitionData(),
+        ]))); // Scaffold
   }
 }
