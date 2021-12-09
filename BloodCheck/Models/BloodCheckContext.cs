@@ -57,11 +57,14 @@ public class BloodCheckContext : DbContext
             .HasColumnType("char(11)")
             .IsRequired();
         modelBuilder.Entity<Patient>()
+            .HasIndex(t => t.cpf)
+            .IsUnique();
+        modelBuilder.Entity<Patient>()
             .Property(t => t.phone)
             .HasColumnName("phone")
             .HasColumnType("varchar(11)")
             .IsRequired();
-
+            
         modelBuilder.Entity<Doctor>()
             .ToTable("Doctors")
             .HasKey(t => t.doctorId)
@@ -72,6 +75,9 @@ public class BloodCheckContext : DbContext
             .HasColumnName("crm")
             .HasColumnType("char(6)")
             .IsRequired();
+        modelBuilder.Entity<Doctor>()
+            .HasIndex(t => t.crm)
+            .IsUnique();
         modelBuilder.Entity<Doctor>()
             .Property(t => t.name)
             .HasColumnName("name")
@@ -101,7 +107,5 @@ public class BloodCheckContext : DbContext
             .HasMany(e => e.Exams)
             .WithMany(e => e.Requests)
             .UsingEntity<RequestExam>();
-
-
     }
 }
