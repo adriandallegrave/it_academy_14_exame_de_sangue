@@ -10,14 +10,13 @@ public class DoctorDTO
 
     public DoctorDTO(int id, string crm, string name)
     {
-        DoctorId = id;
+        DoctorId = id; 
         Crm = crm;
-        Name = name;    
+        Name = name;
     }
 
     public static DoctorDTO FromDoctor(Doctor doctor)
     {
-        return new DoctorDTO(doctor.doctorId, doctor.crm!, doctor.name!);
+        return new DoctorDTO(doctor.DoctorId, doctor.Crm!, doctor.Name!);
     }
-
 }
