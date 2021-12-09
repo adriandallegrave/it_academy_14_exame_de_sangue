@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 //using Microsoft.Extensions.Configuration;
 using BloodCheck.Models;
-//using BloodCheck.Data;
+using BloodCheck.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +11,7 @@ builder.Services.AddDbContext<BloodCheckContext>(options => {
 	options.UseSqlServer("name=ConnectionStrings:DefaultConnection");
 	options.LogTo(Console.WriteLine).EnableSensitiveDataLogging();
 });
-
+builder.Services.AddScoped<IPatientRepository, PatientRepositoryEF>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
