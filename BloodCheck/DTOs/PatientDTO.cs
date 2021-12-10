@@ -19,7 +19,7 @@ public class PatientDTO
     [MaxLength(11)]
     public string? phone {get; set;}
 
-    public List<Request> Requests { get; set; } = null!;
+    //public List<Request> Requests { get; set; } = null!;
 
     public PatientDTO(int patientId, string name, string cpf, string phone)
     {

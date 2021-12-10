@@ -8,13 +8,12 @@ using BloodCheck.Models;
 namespace BloodCheck.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class PatientController : ControllerBase
 {
     private readonly ILogger<PatientController> _logger;
     private readonly IPatientRepository _patientRepository;
 
-    
     public PatientController(ILogger<PatientController> logger, IPatientRepository patientRepository)
     {
         _logger = logger;
@@ -22,15 +21,30 @@ public class PatientController : ControllerBase
     }
 
     // GET /bloodcheck/{id}
-    // 
     [HttpGet("{id:int}")] 
     public async Task<ActionResult<PatientDTO>> GetById(int id)
     {
         var patient = await _patientRepository.GetAsync(id);
         if (patient is null)
         {
-            return NotFound($"Paciente #{id} não encontrado");
+            return NotFound($"Paciente #{id} nao encontrado");
         }
         return PatientDTO.FromPatient(patient);
     }
+
+    [HttpGet]
+    public async Task<IEnumerable<PatientDTO>> GetAllAsync()
+    {
+        var patientAux = await _patientRepository.GetAllAsync();
+        return patientAux.Select(PatientDTO.FromPatient);
+    }
+
+    /*
+    [HttpGet("doctor")]
+    public async Task<IEnumerable<DoctorDTO>> getDoctor()
+    {
+        return await _context.Doctors
+            .Select(d => new DoctorDTO(d.doctorId, d.crm!, d.name!)).ToListAsync();
+    }
+    */
 }

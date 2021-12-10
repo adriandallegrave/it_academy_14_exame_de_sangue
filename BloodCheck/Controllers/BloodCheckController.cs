@@ -7,7 +7,6 @@ namespace BloodCheck.Controllers;
 [Route("[controller]")]
 public class BloodCheckController : ControllerBase
 {
-
     private readonly ILogger<BloodCheckController> _logger;
     private readonly BloodCheckContext _context;
 
@@ -16,6 +15,4 @@ public class BloodCheckController : ControllerBase
         _logger = logger;
         _context = context;
     }
-
-
 }
