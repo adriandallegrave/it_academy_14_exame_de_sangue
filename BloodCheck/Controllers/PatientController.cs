@@ -38,13 +38,4 @@ public class PatientController : ControllerBase
         var patientAux = await _patientRepository.GetAllAsync();
         return patientAux.Select(PatientDTO.FromPatient);
     }
-
-    /*
-    [HttpGet("doctor")]
-    public async Task<IEnumerable<DoctorDTO>> getDoctor()
-    {
-        return await _context.Doctors
-            .Select(d => new DoctorDTO(d.doctorId, d.crm!, d.name!)).ToListAsync();
-    }
-    */
 }
