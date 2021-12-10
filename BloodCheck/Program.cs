@@ -13,6 +13,7 @@ builder.Services.AddDbContext<BloodCheckContext>(options => {
 });
 builder.Services.AddScoped<IPatientRepository, PatientRepositoryEF>();
 builder.Services.AddScoped<IExamRepository, ExamRepositoryEF>();
+builder.Services.AddScoped<IRequestRepository, RequestRepositoryEF>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
