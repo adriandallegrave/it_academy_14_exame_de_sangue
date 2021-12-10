@@ -16,18 +16,6 @@ class _RequisitionDataState extends State<RequisitionData> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'Nova Requisição',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  fontSize: 20,
-                  color: kPrimaryColor,
-                  fontWeight: FontWeight.w600
-              ),
-            ),
-          ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             padding: const EdgeInsets.all(8),

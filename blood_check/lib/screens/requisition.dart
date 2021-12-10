@@ -1,20 +1,19 @@
 import 'package:blood_check/components/exam_data.dart';
 import 'package:blood_check/constants.dart';
-import 'package:blood_check/screens/requisition.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:blood_check/components/patient_data.dart';
 import 'package:blood_check/components/requisition_data.dart';
 
-class NewRequisition extends StatefulWidget {
-  const NewRequisition({Key? key}) : super(key: key);
+class Requisition extends StatefulWidget {
+  const Requisition({Key? key}) : super(key: key);
 
   @override
-  _NewRequisitionState createState() => _NewRequisitionState();
+  _RequisitionState createState() => _RequisitionState();
 }
 
-class _NewRequisitionState extends State<NewRequisition> {
+class _RequisitionState extends State<Requisition> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,34 +27,43 @@ class _NewRequisitionState extends State<NewRequisition> {
           centerTitle: true,
           title: const Text('Blood Check',
               style: TextStyle(fontSize: 24, color: Colors.white)),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Requisition()),
-              );
-            },
-          ),
         ),
-        body: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: const [
-              PatientData(),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Text(
-                  'Nova Requisição',
+        body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          const PatientData(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              children: [
+                const Text(
+                  'Requisição',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontSize: 20,
                       color: kPrimaryColor,
                       fontWeight: FontWeight.w600),
                 ),
-              ),
-              RequisitionData(),
-              ExamData(),
-            ]),
+                IconButton(
+                  iconSize: 20,
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.edit_outlined,
+                    color: kPrimaryColor,
+                  ),
+                ),
+                IconButton(
+                  iconSize: 20,
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.delete_outlined,
+                    color: kPrimaryColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const RequisitionData(),
+          const ExamData(),
+        ]),
         bottomNavigationBar: BottomAppBar(
           color: kPrimaryColor,
           child: SizedBox(
