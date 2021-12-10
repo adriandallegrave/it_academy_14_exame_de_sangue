@@ -28,7 +28,7 @@ public class BloodCheckContext : DbContext
         modelBuilder.Entity<Exam>()
             .ToTable("Exams")
             .HasKey(t => t.examId)
-            .HasName("ExamId");
+            .HasName("examId");
         modelBuilder.Entity<Exam>()
             .Property(t => t.price)
             .HasColumnName("price")
