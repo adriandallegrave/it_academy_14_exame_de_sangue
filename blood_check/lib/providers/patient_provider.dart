@@ -12,7 +12,9 @@ class ApiService {
     //   "employee_age": "0",
     //   "profile_image": ""
     // }]
-    var uriAux = Uri.parse("https://localhost:7288/api/patient");
+    var uriAux = Uri.parse("http://localhost:5210/api/patient");
+
+    //var uriAux = Uri.parse("https://programming-quotes-api.herokuapp.com/quotes");
     final response = await http.get(uriAux);
 
     /*if (response.statusCode == 200) {
