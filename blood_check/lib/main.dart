@@ -1,3 +1,5 @@
+import 'package:blood_check/screens/home_patient.dart';
+import 'package:blood_check/screens/new_patient.dart';
 import 'package:blood_check/screens/new_requisition.dart';
 import 'package:blood_check/screens/patient.dart';
 import 'package:blood_check/screens/requisition.dart';
@@ -8,9 +10,9 @@ void main() {
     title: 'Rotas',
     initialRoute: '/',
     routes: {
-      '/': (context) => const NewRequisition(),
-      '/second': (context) => const Requisition(),
-      '/third': (context) => const Patient(),
+      '/': (context) => const Patient(),
+      //'/second': (context) => const Requisition(),
+      //'/third': (context) => const Patient(),
     },
     debugShowCheckedModeBanner: false,
   ));

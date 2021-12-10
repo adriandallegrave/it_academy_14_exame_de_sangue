@@ -1,5 +1,6 @@
 import 'package:blood_check/components/exam_data.dart';
 import 'package:blood_check/constants.dart';
+import 'package:blood_check/screens/patient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,15 @@ class _RequisitionState extends State<Requisition> {
           centerTitle: true,
           title: const Text('Blood Check',
               style: TextStyle(fontSize: 24, color: Colors.white)),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Patient()),
+              );
+            },
+          ),
         ),
         body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           const PatientData(),
@@ -92,7 +102,12 @@ class _RequisitionState extends State<Requisition> {
                 ),
                 IconButton(
                   iconSize: 45,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Patient()),
+                    );
+                  },
                   icon: const Icon(
                     Icons.check_circle_outline_rounded,
                     color: Colors.white,

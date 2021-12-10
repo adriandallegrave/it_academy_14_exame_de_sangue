@@ -3,6 +3,7 @@ import 'package:blood_check/constants.dart';
 import 'package:blood_check/screens/requisition.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:blood_check/screens/patient.dart';
 
 import 'package:blood_check/components/patient_data.dart';
 import 'package:blood_check/components/requisition_data.dart';
@@ -33,7 +34,7 @@ class _NewRequisitionState extends State<NewRequisition> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Requisition()),
+                MaterialPageRoute(builder: (context) => const Patient()),
               );
             },
           ),
