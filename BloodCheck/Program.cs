@@ -12,6 +12,7 @@ builder.Services.AddDbContext<BloodCheckContext>(options => {
 	options.LogTo(Console.WriteLine).EnableSensitiveDataLogging();
 });
 builder.Services.AddScoped<IPatientRepository, PatientRepositoryEF>();
+builder.Services.AddScoped<IDoctorRepository, DoctorRepositoryEF>();
 builder.Services.AddScoped<IExamRepository, ExamRepositoryEF>();
 builder.Services.AddScoped<IRequestRepository, RequestRepositoryEF>();
 builder.Services.AddControllers();
