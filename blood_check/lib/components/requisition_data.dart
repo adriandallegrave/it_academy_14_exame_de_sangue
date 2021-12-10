@@ -14,24 +14,29 @@ class _RequisitionDataState extends State<RequisitionData> {
   Widget build(BuildContext context) {
     return Form(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Text(
-            'Nova Requisição',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-                fontSize: 24,
-                color: kPrimaryColor,
-                fontWeight: FontWeight.bold),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              'Nova Requisição',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  fontSize: 20,
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.w600
+              ),
+            ),
           ),
           Container(
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: kSecondColor,
               border: Border.all(
                 color: kSecondColor,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(6)),
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
             ),
             child: Column(
               //padding: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 0.0),

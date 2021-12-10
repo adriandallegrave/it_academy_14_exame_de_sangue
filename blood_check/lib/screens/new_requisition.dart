@@ -23,48 +23,62 @@ class _NewRequisitionState extends State<NewRequisition> {
         title: const Text('Blood Check',
             style: TextStyle(fontSize: 24, color: Colors.white)),
       ),
-      body: Container(
-          //padding: const EdgeInsets.all(40),
-          child: Column(children: <Widget>[
-        PatientData(),
-        RequisitionData(),
-        Expanded(child: ExamData()),
-      ])),
+      body: Column(
+        children: const [
+          PatientData(),
+          RequisitionData(),
+          ExamData(),
+        ]
+      ),
       bottomNavigationBar: BottomAppBar(
         color: kPrimaryColor,
-        child: Wrap(children: [
-          Column(children: <Widget>[
-            Row(children: [
-              //Spacer(),
-              RichText(
-                text: const TextSpan(
-                    text: 'Prazo de Entrega Final:',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
-              )
-            ]),
-            Row(
-              children: [
-                RichText(
-                  text: const TextSpan(
-                      text: 'Total:',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
-                )
-              ],
-            ),
-          ])
-        ]),
-      ),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: kPrimaryColor,
-          child: const Icon(Icons.check_circle_outline),
-          onPressed: () {}),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-    ); // Scaffold
+        child: SizedBox(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Row(
+                      children: const [
+                        Text(
+                          "Prazo de Entrega Final:  3 dias úteis",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white
+                          )
+                        )
+                      ]
+                    ),
+                    Row(
+                      children: const [
+                        Text(
+                          "Total: R\$ 33,00",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white
+                          )
+                        )
+                      ],
+                    ),
+                  ]
+                ),
+              ),
+              IconButton(
+                iconSize: 45,
+                onPressed: (){}, 
+                icon: const Icon(
+                Icons.check_circle_outline_rounded,
+                color: Colors.white,
+              ),),
+              const SizedBox(width: 16)
+            ],
+          ),
+        ),
+      )
+    );  
   }
 }
