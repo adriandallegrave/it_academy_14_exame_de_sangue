@@ -38,4 +38,21 @@ public class RequestController : ControllerBase
         var requestAux = await _requestRepository.GetAllAsync();
         return requestAux.Select(RequestDTO.FromRequest);
     }
+    
+    // [HttpPost]
+    // public async Task<ActionResult<RequestDTO>> PostAsync(RequestDTO requestDTO)
+    // {
+    //     if(requestDTO is null)
+    //     {
+    //         return BadRequest();
+    //     }
+
+    //     if(_requestRepository.GetAsync(requestDTO.requestId) is not null)
+    //     {
+    //         return BadRequest();
+    //     }
+    // 	Request request = new Request();
+
+
+    // }
 }

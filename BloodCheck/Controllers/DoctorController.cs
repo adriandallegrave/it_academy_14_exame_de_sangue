@@ -29,14 +29,15 @@ public class DoctorController : ControllerBase
     }
     
     // GET /doctor/1
-    [HttpGet("{id:int}")]
-    public async Task<ActionResult<DoctorDTO>> GetByIdAsync(int id)
+    [HttpGet("{crm}")]
+    public async Task<ActionResult<DoctorDTO>> GetByIdAsync(string crm)
     {
-        var doctor = await _doctorRepository.GetAsync(id);
-        if (doctor is null)
+        var doctorDTO = await _doctorRepository.GetAsync(crm);
+        Console.WriteLine(doctorDTO);
+        if (doctorDTO is null)
         {
             return NotFound();
         }
-        return DoctorDTO.FromDoctor(doctor);
+        return doctorDTO;
     }
 }

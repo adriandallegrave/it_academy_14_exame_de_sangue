@@ -20,6 +20,8 @@ public class ExamController : ControllerBase
         _examRepository =  examRepository;
     }
 
+    // TO-DO: GET api/exam/{idRequest}
+
     // GET /bloodcheck/{id}
     [HttpGet("{id:int}")] 
     public async Task<ActionResult<ExamDTO>> GetById(int id)

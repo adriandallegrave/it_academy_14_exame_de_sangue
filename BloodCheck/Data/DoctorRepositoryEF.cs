@@ -18,8 +18,12 @@ public class DoctorRepositoryEF : IDoctorRepository
         return await _context.Doctors.ToListAsync();
     }
 
-    public async Task<Doctor?> GetAsync(int id)
+    public async Task<DoctorDTO?> GetAsync(string crm)
     {
-        return await _context.Doctors.FindAsync(id);
+        var listOfDoctors = await _context.Doctors
+            .Where(d => d.crm!.Equals(crm))
+            .Select(d => new DoctorDTO(d.doctorId, d.crm!, d.name!))
+            .ToListAsync();
+        return (listOfDoctors!.Count == 0) ? null : listOfDoctors[0];
     }
 }

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using BloodCheck.Models;
+
 namespace BloodCheck.DTOs;
 
 public class RequestDTO
@@ -8,11 +9,13 @@ public class RequestDTO
 
     // Create foreign key Patient (Request many to 1 Patient).
     public int patientId { get; set; }
-    public Patient? Patient { get; set; }
+
+    // public Patient? Patient { get; set; }
 
     // Create foreign key Doctor (Request many to 1 Doctor).
     public int doctorId { get; set; }
-    public Doctor? Doctor { get; set; }
+
+    //public Doctor? Doctor { get; set; }
 
     public DateTime requestDate { get; set; }
 

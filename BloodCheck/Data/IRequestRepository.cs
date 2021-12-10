@@ -7,4 +7,6 @@ public interface IRequestRepository
     Task<Request?> GetAsync(int id);
 
     Task<IEnumerable<Request>> GetAllAsync();
+
+    // Task<Request> AddAsync(Request request);
 }

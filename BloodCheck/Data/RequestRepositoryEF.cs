@@ -22,4 +22,11 @@ public class RequestRepositoryEF : IRequestRepository
     {
         return await _context.Requests.ToListAsync();
     }
+    // public async Task<Request?> AddAsync(Request request)
+    // {
+    //     await _context.Requests.AddAsync(request);
+    //     await _context.SaveChangesAsync();
+        
+    //     return request;
+    // }
 }
