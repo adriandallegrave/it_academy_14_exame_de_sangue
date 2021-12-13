@@ -6,14 +6,16 @@ import 'package:blood_check/screens/requisition.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    title: 'Rotas',
-    initialRoute: '/',
-    routes: {
-      '/': (context) => const Patient(),
-      //'/second': (context) => const Requisition(),
-      //'/third': (context) => const Patient(),
-    },
-    debugShowCheckedModeBanner: false,
-  ));
+  runApp(
+    MaterialApp(
+      title: 'Rotas',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Patient(),
+        '/second': (context) => const Requisition(),
+        '/third': (context) => const NewRequisition(),
+      },
+      debugShowCheckedModeBanner: false,
+    ),
+  );
 }

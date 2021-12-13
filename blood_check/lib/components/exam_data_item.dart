@@ -26,7 +26,8 @@ class _ExamDataItemState extends State<ExamDataItem> {
       child: CheckboxListTile(
         value: _checked,
         title: Text(widget.name, style: TextStyle(color: kPrimaryColor)),
-        subtitle: Text("R\$ ${widget.price} - prazo: ${widget.days} dias uteis"),
+        subtitle:
+            Text("R\$ ${widget.price} - prazo: ${widget.days} dias uteis"),
         onChanged: (bool? value) {
           setState(() {
             _checked = value!;
@@ -34,7 +35,7 @@ class _ExamDataItemState extends State<ExamDataItem> {
         },
         activeColor: kPrimaryColor,
         checkColor: Colors.white,
-      )
+      ),
     );
   }
 }

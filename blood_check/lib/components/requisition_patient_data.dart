@@ -1,19 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/constants.dart';
-import 'package:blood_check/components/exam_data_item.dart';
+import 'package:blood_check/components/requisition_patient_item.dart';
 
-class ExamData extends StatefulWidget {
-  const ExamData({Key? key}) : super(key: key);
+class RequisitionPatient extends StatefulWidget {
+  const RequisitionPatient({Key? key}) : super(key: key);
 
   @override
-  _ExamDataState createState() => _ExamDataState();
+  _RequisitionPatientState createState() => _RequisitionPatientState();
 }
 
-class _ExamDataState extends State<ExamData> {
-  var selectedList = [];
-  final _checked = false;
-
+class _RequisitionPatientState extends State<RequisitionPatient> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -32,7 +29,7 @@ class _ExamDataState extends State<ExamData> {
           children: [
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Text("Exames",
+              child: Text("Requisições",
                   textAlign: TextAlign.start,
                   style: TextStyle(
                       color: Colors.white,
@@ -42,12 +39,12 @@ class _ExamDataState extends State<ExamData> {
             Expanded(
               child: ListView(
                 children: const <Widget>[
-                  ExamDataItem("Colesterol", 4.0, 4),
-                  ExamDataItem("TSH", 5.0, 6),
-                  ExamDataItem("Vitamina C", 10.0, 3),
-                  ExamDataItem("Vitamina D", 10.0, 3),
-                  ExamDataItem("Vitamina E", 10.0, 3),
-                  ExamDataItem("Vitamina F", 10.0, 3),
+                  //Check about date formats in flutter.
+                  RequisitionPatientItem("Requisição 1", "03/12/2021", 5, 2),
+                  RequisitionPatientItem("Requisição 2", "05/12/2021", 2, 3),
+                  RequisitionPatientItem("Requisição 3", "01/12/2021", 5, 4),
+                  RequisitionPatientItem("Requisição 4", "13/12/2021", 4, 3),
+                  RequisitionPatientItem("Requisição 5", "22/12/2021", 5, 2),
                 ],
               ),
             ),
