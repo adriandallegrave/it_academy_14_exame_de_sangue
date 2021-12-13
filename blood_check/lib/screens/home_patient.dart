@@ -30,7 +30,7 @@ class _PatientState extends State<HomePatient> with TickerProviderStateMixin {
         ),
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: const Text('Blood Check - home patient',
+        title: const Text('Blood Check',
             style: TextStyle(fontSize: 24, color: Colors.white)),
         bottom: TabBar(
           controller: _tabController,
