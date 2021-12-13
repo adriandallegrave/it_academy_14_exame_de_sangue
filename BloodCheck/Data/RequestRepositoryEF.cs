@@ -24,4 +24,19 @@ public class RequestRepositoryEF : IRequestRepository
         await _context.SaveChangesAsync();
         return request;
     }
+
+    public async Task<Request?> UpdateAsync(int requestId, RequestDTO requestDTO)
+    {
+        var request = await _context.Requests.FindAsync(requestId);
+        if (request == null){
+            return null;
+        }
+
+        request.DoctorId = requestDTO.DoctorId;
+        request.PatientId = requestDTO.PatientId;
+        request.RequestDate = requestDTO.RequestDate;
+        await _context.SaveChangesAsync();
+
+        return request;
+    }
 }

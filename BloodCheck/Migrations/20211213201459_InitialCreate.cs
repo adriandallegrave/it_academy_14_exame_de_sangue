@@ -13,21 +13,21 @@ namespace BloodCheck.Migrations
                 name: "Doctors",
                 columns: table => new
                 {
-                    doctorId = table.Column<int>(type: "int", nullable: false)
+                    DoctorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     crm = table.Column<string>(type: "char(6)", nullable: false),
                     name = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("doctorId", x => x.doctorId);
+                    table.PrimaryKey("doctorId", x => x.DoctorId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Exams",
                 columns: table => new
                 {
-                    examId = table.Column<int>(type: "int", nullable: false)
+                    ExamId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     price = table.Column<decimal>(type: "numeric(5,2)", nullable: false),
                     description = table.Column<string>(type: "varchar(255)", nullable: false),
@@ -35,14 +35,14 @@ namespace BloodCheck.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("examId", x => x.examId);
+                    table.PrimaryKey("examId", x => x.ExamId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Patients",
                 columns: table => new
                 {
-                    patientId = table.Column<int>(type: "int", nullable: false)
+                    PatientId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "varchar(50)", nullable: false),
                     cpf = table.Column<string>(type: "char(11)", nullable: false),
@@ -50,14 +50,14 @@ namespace BloodCheck.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("patientId", x => x.patientId);
+                    table.PrimaryKey("patientId", x => x.PatientId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Requests",
                 columns: table => new
                 {
-                    requestId = table.Column<int>(type: "int", nullable: false)
+                    RequestId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     patientId = table.Column<int>(type: "int", nullable: false),
                     doctorId = table.Column<int>(type: "int", nullable: false),
@@ -65,18 +65,18 @@ namespace BloodCheck.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("requestId", x => x.requestId);
+                    table.PrimaryKey("requestId", x => x.RequestId);
                     table.ForeignKey(
                         name: "FK_Requests_Doctors_doctorId",
                         column: x => x.doctorId,
                         principalTable: "Doctors",
-                        principalColumn: "doctorId",
+                        principalColumn: "DoctorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Requests_Patients_patientId",
                         column: x => x.patientId,
                         principalTable: "Patients",
-                        principalColumn: "patientId",
+                        principalColumn: "PatientId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -84,29 +84,29 @@ namespace BloodCheck.Migrations
                 name: "RequestExams",
                 columns: table => new
                 {
-                    examId = table.Column<int>(type: "int", nullable: false),
-                    requestId = table.Column<int>(type: "int", nullable: false)
+                    ExamId = table.Column<int>(type: "int", nullable: false),
+                    RequestId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RequestExams", x => new { x.examId, x.requestId });
+                    table.PrimaryKey("PK_RequestExams", x => new { x.ExamId, x.RequestId });
                     table.ForeignKey(
-                        name: "FK_RequestExams_Exams_examId",
-                        column: x => x.examId,
+                        name: "FK_RequestExams_Exams_ExamId",
+                        column: x => x.ExamId,
                         principalTable: "Exams",
-                        principalColumn: "examId",
+                        principalColumn: "ExamId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_RequestExams_Requests_requestId",
-                        column: x => x.requestId,
+                        name: "FK_RequestExams_Requests_RequestId",
+                        column: x => x.RequestId,
                         principalTable: "Requests",
-                        principalColumn: "requestId",
+                        principalColumn: "RequestId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Doctors",
-                columns: new[] { "doctorId", "crm", "name" },
+                columns: new[] { "DoctorId", "crm", "name" },
                 values: new object[,]
                 {
                     { 1, "143523", "Julia" },
@@ -128,7 +128,7 @@ namespace BloodCheck.Migrations
 
             migrationBuilder.InsertData(
                 table: "Exams",
-                columns: new[] { "examId", "deliveryDays", "description", "price" },
+                columns: new[] { "ExamId", "deliveryDays", "description", "price" },
                 values: new object[,]
                 {
                     { 1, 2m, "TTA - TEMPO DE TROMBOPLASTINA ATIVADA", 5.77m },
@@ -162,7 +162,7 @@ namespace BloodCheck.Migrations
 
             migrationBuilder.InsertData(
                 table: "Exams",
-                columns: new[] { "examId", "deliveryDays", "description", "price" },
+                columns: new[] { "ExamId", "deliveryDays", "description", "price" },
                 values: new object[,]
                 {
                     { 28, 2m, "DT3 - DOSAGEM DE TRIIODOTIRONINA (T3)", 8.71m },
@@ -172,7 +172,7 @@ namespace BloodCheck.Migrations
 
             migrationBuilder.InsertData(
                 table: "Patients",
-                columns: new[] { "patientId", "cpf", "name", "phone" },
+                columns: new[] { "PatientId", "cpf", "name", "phone" },
                 values: new object[,]
                 {
                     { 1, "74341671920", "Walmir", "5195483921" },
@@ -205,9 +205,9 @@ namespace BloodCheck.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_RequestExams_requestId",
+                name: "IX_RequestExams_RequestId",
                 table: "RequestExams",
-                column: "requestId");
+                column: "RequestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Requests_doctorId",
