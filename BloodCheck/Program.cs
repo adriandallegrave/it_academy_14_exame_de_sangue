@@ -15,10 +15,19 @@ builder.Services.AddScoped<IPatientRepository, PatientRepositoryEF>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepositoryEF>();
 builder.Services.AddScoped<IExamRepository, ExamRepositoryEF>();
 builder.Services.AddScoped<IRequestRepository, RequestRepositoryEF>();
+builder.Services.AddScoped<IRequestExamRepository, RequestExamRepositoryEF>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowAll",
+        builder => builder.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+        );
+    }
+);
 
 var app = builder.Build();
 
@@ -31,6 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 

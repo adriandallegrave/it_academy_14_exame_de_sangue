@@ -24,6 +24,6 @@ public class DoctorDTO
 
     public static DoctorDTO FromDoctor(Doctor doctor)
     {
-        return new DoctorDTO(doctor.doctorId, doctor.crm!, doctor.name!);
+        return new DoctorDTO(doctor.DoctorId, doctor.Crm!, doctor.Name!);
     }
 }

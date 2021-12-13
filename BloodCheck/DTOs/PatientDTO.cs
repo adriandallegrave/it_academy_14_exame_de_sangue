@@ -6,32 +6,32 @@ namespace BloodCheck.DTOs;
 public class PatientDTO
 {
     //[Required]
-    public int patientId {get; set;}
+    public int PatientId {get; set;}
 
     [Required]
     [MaxLength(50)]
-    public string? name {get; set;}
+    public string? Name {get; set;}
 
     [Required]
     [MaxLength(11)]
-    public string? cpf {get; set;}
+    public string? Cpf {get; set;}
 
     [Required]
     [MaxLength(11)]
-    public string? phone {get; set;}
+    public string? Phone {get; set;}
 
     //public List<Request> Requests { get; set; } = null!;
 
     public PatientDTO(int patientId, string name, string cpf, string phone)
     {
-        this.patientId = patientId;
-        this.name=name;
-        this.cpf=cpf;
-        this.phone=phone;
+        this.PatientId = patientId;
+        this.Name=name;
+        this.Cpf=cpf;
+        this.Phone=phone;
     }
 
     public static PatientDTO FromPatient(Patient patient)
     {
-        return new PatientDTO(patient.patientId, patient.name!, patient.cpf!, patient.phone!);
+        return new PatientDTO(patient.PatientId, patient.Name!, patient.Cpf!, patient.Phone!);
     }
 }

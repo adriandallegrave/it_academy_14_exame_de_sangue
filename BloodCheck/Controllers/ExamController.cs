@@ -4,11 +4,13 @@ using Microsoft.Extensions.Logging;
 using BloodCheck.Data;
 using BloodCheck.DTOs;
 using BloodCheck.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace BloodCheck.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[EnableCors("AllowAll")]
 public class ExamController : ControllerBase
 {
     private readonly ILogger<ExamController> _logger;
@@ -20,20 +22,19 @@ public class ExamController : ControllerBase
         _examRepository =  examRepository;
     }
 
-    // TO-DO: GET api/exam/{idRequest}
-
-    // GET /bloodcheck/{id}
+    // GET api/exam/{id}
     [HttpGet("{id:int}")] 
-    public async Task<ActionResult<ExamDTO>> GetById(int id)
+    public async Task<ActionResult<ExamDTO>> GetByIdAsync(int id)
     {
         var exam = await _examRepository.GetAsync(id);
         if (exam is null)
         {
-            return NotFound($"Exame #{id} nao encontrado");
+            return NotFound();
         }
-        return ExamDTO.FromExam(exam);
+        return Ok(ExamDTO.FromExam(exam));
     }
 
+    // GET api/exam
     [HttpGet]
     public async Task<IEnumerable<ExamDTO>> GetAllAsync()
     {

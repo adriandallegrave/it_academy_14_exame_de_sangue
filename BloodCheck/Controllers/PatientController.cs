@@ -4,11 +4,13 @@ using Microsoft.Extensions.Logging;
 using BloodCheck.Data;
 using BloodCheck.DTOs;
 using BloodCheck.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace BloodCheck.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[EnableCors("AllowAll")]
 public class PatientController : ControllerBase
 {
     private readonly ILogger<PatientController> _logger;
@@ -20,18 +22,20 @@ public class PatientController : ControllerBase
         _patientRepository =  patientRepository;
     }
 
-    // GET /bloodcheck/{id}
-    [HttpGet("{id:int}")] 
-    public async Task<ActionResult<PatientDTO>> GetById(int id)
+    // GET api/patient/{cpf}
+    [HttpGet("{cpf:long:length(11)}")]
+    public async Task<ActionResult<PatientDTO>> GetByCpfAsync([FromRoute] long cpf)
     {
-        var patient = await _patientRepository.GetAsync(id);
+        var cpfToString = cpf.ToString();
+        var patient = await _patientRepository.GetAsync(cpfToString);
         if (patient is null)
         {
-            return NotFound($"Paciente #{id} nao encontrado");
+            return NotFound();
         }
-        return PatientDTO.FromPatient(patient);
+        return Ok(PatientDTO.FromPatient(patient));
     }
 
+    // GET api/patient
     [HttpGet]
     public async Task<IEnumerable<PatientDTO>> GetAllAsync()
     {

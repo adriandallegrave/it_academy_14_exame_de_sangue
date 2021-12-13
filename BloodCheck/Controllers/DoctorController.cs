@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using BloodCheck.Models;
 using BloodCheck.DTOs;
 using BloodCheck.Data;
+using Microsoft.AspNetCore.Cors;
 
 namespace BloodCheck.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[EnableCors("AllowAll")]
 public class DoctorController : ControllerBase
 {
     private ILogger<DoctorController> _logger;
@@ -20,24 +22,24 @@ public class DoctorController : ControllerBase
         _doctorRepository = doctorRepository;
     }
 
-    // GET /doctor
+    // GET api/doctor/{crm}
+    [HttpGet("{crm:int:length(6)}")]
+    public async Task<ActionResult<DoctorDTO>> GetByCrmAsync([FromRoute] int crm)
+    {
+        var crmToString = crm.ToString();
+        var doctor = await _doctorRepository.GetAsync(crmToString);
+        if (doctor is null)
+        {
+            return NotFound();
+        }
+        return Ok(DoctorDTO.FromDoctor(doctor));
+    }
+    
+    // GET api/doctor
     [HttpGet]
     public async Task<IEnumerable<DoctorDTO>> GetAllAsync()
     {
         var doctorAux = await _doctorRepository.GetAllAsync();
         return doctorAux.Select(DoctorDTO.FromDoctor);
-    }
-    
-    // GET /doctor/1
-    [HttpGet("{crm}")]
-    public async Task<ActionResult<DoctorDTO>> GetByIdAsync(string crm)
-    {
-        var doctorDTO = await _doctorRepository.GetAsync(crm);
-        Console.WriteLine(doctorDTO);
-        if (doctorDTO is null)
-        {
-            return NotFound();
-        }
-        return doctorDTO;
     }
 }

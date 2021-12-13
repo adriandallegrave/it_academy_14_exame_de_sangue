@@ -1,5 +1,4 @@
 using BloodCheck.Models;
-using BloodCheck.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace BloodCheck.Data;
@@ -13,17 +12,19 @@ public class DoctorRepositoryEF : IDoctorRepository
         _context = context;
     }
 
+    public async Task<Doctor?> GetAsync(int id)
+    {
+        return await _context.Doctors.FindAsync(id);
+    }
+
+    public async Task<Doctor?> GetAsync(string crm)
+    {
+        return await _context.Doctors
+            .SingleOrDefaultAsync(d => d.Crm == crm);
+    }
+
     public async Task<IEnumerable<Doctor>> GetAllAsync()
     {
         return await _context.Doctors.ToListAsync();
-    }
-
-    public async Task<DoctorDTO?> GetAsync(string crm)
-    {
-        var listOfDoctors = await _context.Doctors
-            .Where(d => d.crm!.Equals(crm))
-            .Select(d => new DoctorDTO(d.doctorId, d.crm!, d.name!))
-            .ToListAsync();
-        return (listOfDoctors!.Count == 0) ? null : listOfDoctors[0];
     }
 }
