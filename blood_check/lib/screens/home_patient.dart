@@ -1,3 +1,5 @@
+// The home_patient screen is the home screen. It has a tab for the list of patients and another for the new_patient.
+
 import 'package:blood_check/components/new_patient.dart';
 import 'package:blood_check/components/patient_list.dart';
 import 'package:blood_check/constants.dart';

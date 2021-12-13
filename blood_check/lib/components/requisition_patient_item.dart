@@ -1,15 +1,14 @@
+// This is the item in a list of the exams of the requisition
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/screens/requisition.dart';
 
 class RequisitionPatientItem extends StatefulWidget {
-  final String name;
+  final String exams; //Insert exams for each requisition
   final String date; //Check about date formats in flutter.
-  final int PatientId;
-  final int DoctorId;
 
-  const RequisitionPatientItem(
-      this.name, this.date, this.PatientId, this.DoctorId);
+  const RequisitionPatientItem(this.exams, this.date);
 
   @override
   _RequisitionPatientItemState createState() => _RequisitionPatientItemState();
@@ -25,7 +24,8 @@ class _RequisitionPatientItemState extends State<RequisitionPatientItem> {
       ),
       child: ListTile(
         //title: Text(widget.name, style: TextStyle(color: kPrimaryColor)),
-        subtitle: Text(" ${widget.name} - ${widget.date} "),
+        subtitle: Text(
+            " ${widget.date} - ${widget.exams} "), //Insert data from DB here
         onTap: () {
           Navigator.push(
             context,

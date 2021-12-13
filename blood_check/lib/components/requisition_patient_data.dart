@@ -1,3 +1,5 @@
+// This component presents the requisitions for each patient.
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/constants.dart';
@@ -38,13 +40,16 @@ class _RequisitionPatientState extends State<RequisitionPatient> {
             ),
             Expanded(
               child: ListView(
+                // This is the list of Requisitions in the patient details screen.
                 children: const <Widget>[
-                  //Check about date formats in flutter.
-                  RequisitionPatientItem("Requisição 1", "03/12/2021", 5, 2),
-                  RequisitionPatientItem("Requisição 2", "05/12/2021", 2, 3),
-                  RequisitionPatientItem("Requisição 3", "01/12/2021", 5, 4),
-                  RequisitionPatientItem("Requisição 4", "13/12/2021", 4, 3),
-                  RequisitionPatientItem("Requisição 5", "22/12/2021", 5, 2),
+                  // Insert data from DB here
+                  // Check about date formats in flutter.
+                  RequisitionPatientItem(
+                      "Exames da requisição 1", "03/12/2021"),
+                  RequisitionPatientItem(
+                      "Exames da requisição 2", "05/12/2021"),
+                  RequisitionPatientItem(
+                      "Exames da requisição 3", "01/12/2021"),
                 ],
               ),
             ),

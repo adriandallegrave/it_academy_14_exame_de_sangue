@@ -1,3 +1,5 @@
+// This component is the item (exam) in the requisition screens.
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/constants.dart';

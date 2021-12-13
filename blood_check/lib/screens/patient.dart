@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'home_patient.dart';
 import 'new_requisition.dart';
 import 'package:blood_check/components/requisition_patient_data.dart';
-import 'package:blood_check/screens/requisition.dart';
 
 class Patient extends StatefulWidget {
   const Patient({Key? key}) : super(key: key);
@@ -38,6 +37,7 @@ class _PatientState extends State<Patient> {
           },
         ),
       ),
+      // This is the main area of the screen. It contains the PatientData component (name, cpf...) and the new requesition button.
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: const [

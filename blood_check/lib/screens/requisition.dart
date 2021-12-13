@@ -1,3 +1,5 @@
+// This is the requisition screen. It contains the Patient Data (name, cpf...), Requisition data and Exam data - relative to this specific requisition;
+
 import 'package:blood_check/components/exam_data.dart';
 import 'package:blood_check/constants.dart';
 import 'package:blood_check/screens/patient.dart';
@@ -57,7 +59,7 @@ class _RequisitionState extends State<Requisition> {
                 IconButton(
                   iconSize: 20,
                   onPressed: () {
-                    //Still pending.
+                    // Still pending.
                   },
                   icon: const Icon(
                     Icons.edit_outlined,
@@ -71,7 +73,7 @@ class _RequisitionState extends State<Requisition> {
                       context,
                       MaterialPageRoute(builder: (context) => const Patient()),
                     );
-                    //Still pending.
+                    // Still pending.
                   },
                   icon: const Icon(
                     Icons.delete_outlined,
@@ -99,13 +101,14 @@ class _RequisitionState extends State<Requisition> {
                   children: <Widget>[
                     Row(
                       children: const [
-                        Text("Prazo de Entrega Final:  3 dias úteis",
+                        Text(
+                            "Prazo de Entrega Final:  3 dias úteis", //Insert data from DB here
                             style: TextStyle(fontSize: 16, color: Colors.white))
                       ],
                     ),
                     Row(
                       children: const [
-                        Text("Total: R\$ 33,00",
+                        Text("Total: R\$ 33,00", //Insert data from DB here
                             style: TextStyle(fontSize: 16, color: Colors.white))
                       ],
                     ),
