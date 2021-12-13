@@ -20,7 +20,7 @@ class _PatientDataState extends State<PatientData> {
         border: Border.all(
           color: Colors.transparent,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(6)),
+        borderRadius: const BorderRadius.all(Radius.circular(6)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -28,7 +28,7 @@ class _PatientDataState extends State<PatientData> {
           Row(
             children: [
               RichText(
-                text: TextSpan(
+                text: const TextSpan(
                     text: 'Débora Sanchéz', //Insert name from DB here
                     style: TextStyle(
                         color: kPrimaryColor,
@@ -40,7 +40,7 @@ class _PatientDataState extends State<PatientData> {
           Row(
             children: [
               RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   children: <TextSpan>[
                     TextSpan(
                         text: 'CPF: ',
@@ -61,7 +61,7 @@ class _PatientDataState extends State<PatientData> {
           Row(
             children: [
               RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   children: <TextSpan>[
                     TextSpan(
                         text: 'Telefone: ',

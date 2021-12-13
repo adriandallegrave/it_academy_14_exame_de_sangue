@@ -30,8 +30,9 @@ class _RequisitionDataState extends State<RequisitionData> {
               //padding: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 0.0),
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(8, 8, 8, 0),
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  margin: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -40,7 +41,7 @@ class _RequisitionDataState extends State<RequisitionData> {
                     ),
                   ),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: InputBorder.none,
                         icon: Icon(Icons.date_range),
                         hintText: 'dd/mm/yyyy',
