@@ -163,7 +163,7 @@ namespace BloodCheck.Migrations
                         .HasColumnName("price");
 
                     b.HasKey("examId")
-                        .HasName("ExamId");
+                        .HasName("examId");
 
                     b.ToTable("Exams", (string)null);
 

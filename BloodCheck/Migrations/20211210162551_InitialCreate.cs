@@ -35,7 +35,7 @@ namespace BloodCheck.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("ExamId", x => x.examId);
+                    table.PrimaryKey("examId", x => x.examId);
                 });
 
             migrationBuilder.CreateTable(

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BloodCheck.Migrations
 {
     [DbContext(typeof(BloodCheckContext))]
-    [Migration("20211209182655_InitialCreate")]
+    [Migration("20211210162551_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -165,7 +165,7 @@ namespace BloodCheck.Migrations
                         .HasColumnName("price");
 
                     b.HasKey("examId")
-                        .HasName("ExamId");
+                        .HasName("examId");
 
                     b.ToTable("Exams", (string)null);
 
