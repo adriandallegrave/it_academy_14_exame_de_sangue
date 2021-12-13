@@ -1,3 +1,5 @@
+// The home_patient screen is the home screen. It has a tab for the list of patients and another for the new_patient.
+
 import 'package:blood_check/components/new_patient.dart';
 import 'package:blood_check/components/patient_list.dart';
 import 'package:blood_check/constants.dart';
@@ -30,7 +32,7 @@ class _PatientState extends State<HomePatient> with TickerProviderStateMixin {
         ),
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: const Text('Blood Check - home patient',
+        title: const Text('Blood Check',
             style: TextStyle(fontSize: 24, color: Colors.white)),
         bottom: TabBar(
           controller: _tabController,

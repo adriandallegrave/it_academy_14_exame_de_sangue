@@ -1,3 +1,5 @@
+// This component represents the patient data: name, cpf and phone number.
+
 import 'package:blood_check/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

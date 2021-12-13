@@ -1,8 +1,9 @@
+// This component represents the list of patients already on the database.
+
 import 'package:blood_check/components/patient_list_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/constants.dart';
-import 'package:blood_check/components/requisition_patient_item.dart';
 
 class PatientList extends StatefulWidget {
   const PatientList({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _PatientListState extends State<PatientList> {
               child: ListView(
                 children: const <Widget>[
                   //Check about date formats in flutter.
-                  PatientListItem("Debora"),
+                  PatientListItem("Debora"), //Insert data from DB here
                 ],
               ),
             ),

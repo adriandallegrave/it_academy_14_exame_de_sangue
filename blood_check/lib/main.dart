@@ -1,5 +1,3 @@
-import 'package:blood_check/screens/home_patient.dart';
-//import 'package:blood_check/screens/new_patient.dart';
 import 'package:blood_check/screens/new_requisition.dart';
 import 'package:blood_check/screens/patient.dart';
 import 'package:blood_check/screens/requisition.dart';

@@ -1,3 +1,5 @@
+// This is the new requisition screen.
+
 import 'package:blood_check/components/exam_data.dart';
 import 'package:blood_check/constants.dart';
 import 'package:blood_check/screens/requisition.dart';
@@ -72,13 +74,14 @@ class _NewRequisitionState extends State<NewRequisition> {
                   children: <Widget>[
                     Row(
                       children: const [
-                        Text("Prazo de Entrega Final:  3 dias úteis",
+                        Text(
+                            "Prazo de Entrega Final:  3 dias úteis", //Insert data from DB here
                             style: TextStyle(fontSize: 16, color: Colors.white))
                       ],
                     ),
                     Row(
                       children: const [
-                        Text("Total: R\$ 33,00",
+                        Text("Total: R\$ 33,00", //Insert data from DB here
                             style: TextStyle(fontSize: 16, color: Colors.white))
                       ],
                     ),

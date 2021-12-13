@@ -1,3 +1,5 @@
+// This component contains the date of the requisition and the medic's CRM.
+
 import 'package:blood_check/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +29,6 @@ class _RequisitionDataState extends State<RequisitionData> {
               borderRadius: const BorderRadius.all(Radius.circular(16)),
             ),
             child: Column(
-              //padding: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 0.0),
               children: [
                 Container(
                   margin: const EdgeInsets.fromLTRB(8, 8, 8, 0),

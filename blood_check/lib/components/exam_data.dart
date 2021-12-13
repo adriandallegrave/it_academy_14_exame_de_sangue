@@ -1,3 +1,5 @@
+// This component presents the checkbox list in the NewRequisition screen.
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/constants.dart';
@@ -42,6 +44,7 @@ class _ExamDataState extends State<ExamData> {
             Expanded(
               child: ListView(
                 children: const <Widget>[
+                  // Insert data from DB here - (description, price, deadline)
                   ExamDataItem("Colesterol", 4.0, 4),
                   ExamDataItem("TSH", 5.0, 6),
                   ExamDataItem("Vitamina C", 10.0, 3),
