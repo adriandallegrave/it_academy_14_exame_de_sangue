@@ -15,28 +15,21 @@ class PatientList extends StatefulWidget {
 class _PatientListState extends State<PatientList> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16),
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        decoration: const BoxDecoration(
-          color: kSecondColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(16),
-            topRight: Radius.circular(16),
-          ),
+    return Container(
+      margin: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 0),
+      decoration: const BoxDecoration(
+        color: kSecondColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: ListView(
-                children: const <Widget>[
-                  //Check about date formats in flutter.
-                  PatientListItem("Debora"), //Insert data from DB here
-                ],
-              ),
-            ),
+      ),
+      child: Expanded(
+        child: ListView(
+          padding: const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 0),
+          children: const <Widget>[
+            //Check about date formats in flutter.
+            PatientListItem("Debora"), //Insert data from DB here
           ],
         ),
       ),
