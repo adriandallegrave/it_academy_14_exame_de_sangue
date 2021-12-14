@@ -32,15 +32,16 @@ public class RequestController : ControllerBase
     }
 
     // GET /api/request/{id}
-    [HttpGet("{id:int}")] 
-    public async Task<ActionResult<RequestDTO>> GetByIdAsync(int id)
+    [HttpGet("{id:long:length(11)}")] 
+    public async Task<ActionResult<RequestDTO>> GetByCpfAsync(long cpf)
     {
-        var request = await _requestRepository.GetAsync(id);
+        var cpfToString = cpf.ToString();
+        var request = await _requestRepository.GetAsync(cpfToString);
         if (request is null)
         {
             return NotFound();
         }
-        return Ok(RequestDTO.FromRequest(request));
+        return Ok(request.Select(RequestDTO.FromRequest));
     }
     
     // POST /api/request/

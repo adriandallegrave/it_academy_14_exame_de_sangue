@@ -13,9 +13,20 @@ public class RequestRepositoryEF : IRequestRepository
         _context = context;
     }
 
-    public async Task<Request?> GetAsync(int id)
+    public async Task<IEnumerable<Request>?> GetAsync(string cpf)
     {
-        return await _context.Requests.FindAsync(id);
+        var requests = await _context.Requests.ToListAsync();
+        var patient = await _context.Patients
+            .SingleOrDefaultAsync(d => d.Cpf == cpf);
+        if (patient is null)
+        {
+            return null;
+        }
+        Console.WriteLine($"\n\n\n\n\n{patient.PatientId}, {patient.Name}, {patient.Cpf}\n\n\n\n");
+
+        var requestsById = _context.Requests.FromSqlInterpolated($"select * from requests where requests.PatientId = {patient.PatientId}").ToListAsync();
+        
+        return null;
     }
     
     public async Task<Request> AddAsync(Request request)
