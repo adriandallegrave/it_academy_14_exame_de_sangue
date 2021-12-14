@@ -4,6 +4,8 @@ import 'package:blood_check/screens/patient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:blood_check/providers/patient_provider.dart';
+
 class PatientListItem extends StatefulWidget {
   final String name;
 
