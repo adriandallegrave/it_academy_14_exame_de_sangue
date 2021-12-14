@@ -13,9 +13,30 @@ public class RequestRepositoryEF : IRequestRepository
         _context = context;
     }
 
-    public async Task<Request?> GetAsync(int id)
+    public async Task<RequestDTO?> GetAsync(int id)
     {
-        return await _context.Requests.FindAsync(id);
+        var requestExams = await _context.RequestExams
+            .FromSqlInterpolated($"select * from RequestExams where RequestId = {id}")
+            .ToListAsync();
+
+        if (requestExams.Count == 0)
+        {
+            return null;
+        }
+
+        List<int> examsIds = new List<int>();
+        // Console.WriteLine("\n\n\n\n\n\n");
+        foreach (var requestExam in requestExams)
+        {
+            // Console.WriteLine($"RequestId = {item.RequestId}, ExamId = {item.ExamId}");
+            examsIds.Add(requestExam.ExamId);
+        }
+        // Console.WriteLine("\n\n\n\n\n\n");
+        
+        var request = await _context.Requests.FindAsync(id);
+        var requestDTO = RequestDTO.FromRequest(request);
+        requestDTO.ExamsIDs = examsIds;
+        return requestDTO;
     }
     
     public async Task<Request> AddAsync(Request request)
@@ -25,16 +46,22 @@ public class RequestRepositoryEF : IRequestRepository
         return request;
     }
 
-    public async Task<Request?> UpdateAsync(int requestId, RequestDTO requestDTO)
+    public async Task<Request?> UpdateAsync(int requestId, PutRequestDTO putRequestDTO)
     {
         var request = await _context.Requests.FindAsync(requestId);
-        if (request == null){
+        if (request == null)
+        {
             return null;
         }
 
-        request.DoctorId = requestDTO.DoctorId;
-        request.PatientId = requestDTO.PatientId;
-        request.RequestDate = requestDTO.RequestDate;
+        var doctor = await _context.Doctors.SingleOrDefaultAsync(d => d.Crm == putRequestDTO.Crm);
+        if (doctor == null)
+        {
+            return null;
+        }
+
+        request.DoctorId = doctor.DoctorId;    
+        request.RequestDate = DateTime.Now;
         await _context.SaveChangesAsync();
 
         return request;
