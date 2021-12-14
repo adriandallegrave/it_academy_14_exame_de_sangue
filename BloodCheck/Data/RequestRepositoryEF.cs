@@ -24,4 +24,10 @@ public class RequestRepositoryEF : IRequestRepository
         await _context.SaveChangesAsync();
         return request;
     }
+    public async Task<Request> RemoveAsync(Request request)
+    {
+        _context.Requests.Remove(request);
+        await _context.SaveChangesAsync();
+        return request;
+    }
 }

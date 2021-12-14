@@ -30,6 +30,17 @@ public class RequestController : ControllerBase
         _doctorRepository = doctorRepository;
         _examRepository = examRepository;
     }
+    [HttpDelete("deleterequest/{id:int}")] //DELETE api/TodoItems/1
+    public async Task<IActionResult> RemoveAsync(int id)
+    {
+        var request = await _requestRepository.GetAsync(id);
+        if (request == null)
+        {
+            return NotFound();
+        }
+        await _requestRepository.RemoveAsync(request);
+        return NoContent();
+    }
 
     // GET /api/request/{id}
     [HttpGet("{id:int}")] 
@@ -96,4 +107,8 @@ public class RequestController : ControllerBase
         }  
         return requestDTO;
     }
+    
+
+
 }
+
