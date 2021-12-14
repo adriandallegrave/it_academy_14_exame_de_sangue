@@ -16,6 +16,7 @@ class HomePatient extends StatefulWidget {
 class _PatientState extends State<HomePatient> with TickerProviderStateMixin {
   late TabController _tabController;
 
+  @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
