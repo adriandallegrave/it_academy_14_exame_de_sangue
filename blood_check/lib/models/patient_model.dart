@@ -1,10 +1,10 @@
-class Patient_Models {
+class Patient_Model {
   final int id;
   final String? name;
   final String? cpf;
   final String? phone;
 
-  Patient_Models(this.id, this.name, this.cpf, this.phone);
+  Patient_Model(this.id, this.name, this.cpf, this.phone);
 
   @override
   String toString() {

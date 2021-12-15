@@ -1,15 +1,15 @@
 // This component is the item (exam) in the requisition screens.
 
+import 'package:blood_check/models/exam_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/constants.dart';
 
 class ExamDataItem extends StatefulWidget {
-  final String name;
-  final double price;
-  final int days;
+  final Exam_Model exam;
+  final setSelected;
 
-  const ExamDataItem(this.name, this.price, this.days);
+  const ExamDataItem(this.exam, this.setSelected);
 
   @override
   _ExamDataItemState createState() => _ExamDataItemState();
@@ -17,6 +17,8 @@ class ExamDataItem extends StatefulWidget {
 
 class _ExamDataItemState extends State<ExamDataItem> {
   var _checked = false;
+
+  getChecked() => _checked;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +29,11 @@ class _ExamDataItemState extends State<ExamDataItem> {
       ),
       child: CheckboxListTile(
         value: _checked,
-        title: Text(widget.name, style: const TextStyle(color: kPrimaryColor)),
+        title: Text(widget.exam.description, style: const TextStyle(color: kPrimaryColor)),
         subtitle:
-            Text("R\$ ${widget.price} - prazo: ${widget.days} dias uteis"),
+            Text("R\$ ${widget.exam.price} - prazo: ${widget.exam.delivery_days} dias uteis"),
         onChanged: (bool? value) {
+          widget.setSelected(widget.exam.id);
           setState(() {
             _checked = value!;
           });

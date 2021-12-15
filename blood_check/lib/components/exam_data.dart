@@ -1,5 +1,7 @@
 // This component presents the checkbox list in the NewRequisition screen.
 
+import 'package:blood_check/models/exam_model.dart';
+import 'package:blood_check/providers/exam_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/constants.dart';
@@ -15,6 +17,11 @@ class ExamData extends StatefulWidget {
 class _ExamDataState extends State<ExamData> {
   var selectedList = [];
   final _checked = false;
+
+  setSelected (int selectedId) { 
+    selectedList.add(selectedId);
+    print(selectedList.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,21 +49,66 @@ class _ExamDataState extends State<ExamData> {
                       fontSize: 20)),
             ),
             Expanded(
-              child: ListView(
-                children: const <Widget>[
-                  // Insert data from DB here - (description, price, deadline)
-                  ExamDataItem("Colesterol", 4.0, 4),
-                  ExamDataItem("TSH", 5.0, 6),
-                  ExamDataItem("Vitamina C", 10.0, 3),
-                  ExamDataItem("Vitamina D", 10.0, 3),
-                  ExamDataItem("Vitamina E", 10.0, 3),
-                  ExamDataItem("Vitamina F", 10.0, 3),
-                ],
-              ),
-            ),
+              child: FutureBuilder(
+                  future: getExamData(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    List<Widget> children;
+
+                    // if response has data
+                    if (snapshot.hasData) {
+                      List<Exam_Model> exams =
+                          Exam_Model.examsFromJson(snapshot.data);
+
+                      List<Widget> exams_widgets = <Widget>[];
+                      children = exams_widgets;
+
+                      for(var exam in exams ) { 
+                        exams_widgets
+                                .add(ExamDataItem(exam, setSelected)); }
+                      
+
+
+
+                      // if response has error
+                    } else if (snapshot.hasError) {
+                      children = <Widget>[
+                        const Icon(
+                          Icons.error_outline,
+                          color: Colors.red,
+                          size: 60,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: Text('Error: ${snapshot.error}'),
+                        )
+                      ];
+                    // if theres no response yet
+                    } else {
+                      children = const <Widget>[
+                        SizedBox(
+                          width: 60,
+                          height: 60,
+                          child: CircularProgressIndicator(),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 16),
+                          child: Text('Awaiting result...'),
+                        )
+                      ];
+                    }
+
+                    return ListView(
+                      children: children,
+                    );
+                  }),
+            )
           ],
         ),
       ),
     );
+  }
+
+  Future<List<dynamic>> getExamData() async {
+    return await ApiService.getExams();
   }
 }

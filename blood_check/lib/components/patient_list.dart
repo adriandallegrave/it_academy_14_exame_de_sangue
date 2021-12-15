@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/constants.dart';
 import 'package:blood_check/providers/patient_provider.dart';
-import 'package:blood_check/models/patient_models.dart';
+import 'package:blood_check/models/patient_model.dart';
 
 class PatientList extends StatefulWidget {
   const PatientList({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _PatientListState extends State<PatientList> {
       });
   }
 
-   Future<List<dynamic>> getPatientsData() async {
+  Future<List<dynamic>> getPatientsData() async {
     return await ApiService.getPatients();
   }
 }
