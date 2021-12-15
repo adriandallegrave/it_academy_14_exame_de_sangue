@@ -59,20 +59,8 @@ class _RequisitionState extends State<Requisition> {
                 IconButton(
                   iconSize: 20,
                   onPressed: () {
-                    // Still pending.
-                  },
-                  icon: const Icon(
-                    Icons.edit_outlined,
-                    color: kPrimaryColor,
-                  ),
-                ),
-                IconButton(
-                  iconSize: 20,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Patient()),
-                    );
+                    showAlertDialog(context);
+                    //const AlertDialog(title: Text('Excluído'));
                     // Still pending.
                   },
                   icon: const Icon(
@@ -135,4 +123,30 @@ class _RequisitionState extends State<Requisition> {
       ),
     );
   }
+}
+
+showAlertDialog(BuildContext context) {
+  Widget okButton = TextButton(
+    child: Text("ok"),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Patient()),
+      );
+    },
+  );
+
+  AlertDialog alert = AlertDialog(
+    title: Text('Excluído'),
+    actions: [
+      okButton,
+    ],
+  );
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

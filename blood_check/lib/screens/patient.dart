@@ -25,7 +25,7 @@ class _PatientState extends State<Patient> {
         ),
         backgroundColor: kPrimaryColor,
         centerTitle: true,
-        title: const Text('Blood Check - patient',
+        title: const Text('Blood Check',
             style: TextStyle(fontSize: 24, color: Colors.white)),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
