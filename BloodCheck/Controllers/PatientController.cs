@@ -42,4 +42,16 @@ public class PatientController : ControllerBase
         var patientAux = await _patientRepository.GetAllAsync();
         return patientAux.Select(PatientDTO.FromPatient);
     }
+
+    [HttpPost]
+    public async Task<ActionResult> PostAsync([FromBody] PostPatientDTO postPatientDTO)
+    {
+        var patient = _patientRepository.GetAsync(postPatientDTO.Cpf);
+        if (patient is not null)
+        {
+            return BadRequest();
+        }
+        _patientRepository.AddAsync(postPatientDTO);
+        return Ok();
+    }
 }

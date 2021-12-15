@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using BloodCheck.Models;
+using BloodCheck.DTOs;
 
 namespace BloodCheck.Data;
 
@@ -26,5 +27,12 @@ public class PatientRepositoryEF : IPatientRepository
     public async Task<IEnumerable<Patient>> GetAllAsync()
     {
         return await _context.Patients.ToListAsync();
+    }
+
+    public async Task<Patient> AddAsync(PostPatientDTO postPatientDTO)
+    {
+        var newPatient = await _context.Patients.AddAsync(postPatientDTO);
+        await _context.SaveChangesAsync();
+        return newPatient;
     }
 }

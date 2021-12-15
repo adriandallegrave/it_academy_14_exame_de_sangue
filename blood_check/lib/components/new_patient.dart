@@ -1,5 +1,6 @@
 // This component is used for entering new patients. There are fields to input the patient data and a button below to save the new patient.
 
+import 'package:blood_check/models/patient_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blood_check/constants.dart';
@@ -99,7 +100,9 @@ class _NewPatientState extends State<NewPatient> {
                   */
                   onPressed: () {
                     // Save the new pacient
-                    //debugPrint('Received click');
+                    debugPrint('Received click');
+                    // Create the patient model and extract the info from the TextFields
+                    //Patient_Model newpacient = Patient_Model(id, name, cpf, phone)
                   },
                   child: const Text('Salvar Paciente'),
                 )
