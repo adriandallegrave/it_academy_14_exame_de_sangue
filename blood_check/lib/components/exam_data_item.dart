@@ -15,7 +15,11 @@ class ExamDataItem extends StatefulWidget {
   _ExamDataItemState createState() => _ExamDataItemState();
 }
 
-class _ExamDataItemState extends State<ExamDataItem> {
+class _ExamDataItemState extends State<ExamDataItem>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   var _checked = false;
 
   getChecked() => _checked;
@@ -29,9 +33,10 @@ class _ExamDataItemState extends State<ExamDataItem> {
       ),
       child: CheckboxListTile(
         value: _checked,
-        title: Text(widget.exam.description, style: const TextStyle(color: kPrimaryColor)),
-        subtitle:
-            Text("R\$ ${widget.exam.price} - prazo: ${widget.exam.delivery_days} dias uteis"),
+        title: Text(widget.exam.description,
+            style: const TextStyle(color: kPrimaryColor)),
+        subtitle: Text(
+            "R\$ ${widget.exam.price} - prazo: ${widget.exam.delivery_days} dias uteis"),
         onChanged: (bool? value) {
           widget.setSelected(widget.exam.id);
           setState(() {

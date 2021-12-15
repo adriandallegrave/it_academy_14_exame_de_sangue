@@ -18,8 +18,11 @@ class _ExamDataState extends State<ExamData> {
   var selectedList = [];
   final _checked = false;
 
-  setSelected (int selectedId) { 
-    selectedList.add(selectedId);
+  setSelected(int selectedId) {
+    if (selectedList.contains(selectedId))
+      selectedList.remove(selectedId);
+    else
+      selectedList.add(selectedId);
     print(selectedList.toString());
   }
 
@@ -62,12 +65,9 @@ class _ExamDataState extends State<ExamData> {
                       List<Widget> exams_widgets = <Widget>[];
                       children = exams_widgets;
 
-                      for(var exam in exams ) { 
-                        exams_widgets
-                                .add(ExamDataItem(exam, setSelected)); }
-                      
-
-
+                      for (var exam in exams) {
+                        exams_widgets.add(ExamDataItem(exam, setSelected));
+                      }
 
                       // if response has error
                     } else if (snapshot.hasError) {
@@ -82,7 +82,7 @@ class _ExamDataState extends State<ExamData> {
                           child: Text('Error: ${snapshot.error}'),
                         )
                       ];
-                    // if theres no response yet
+                      // if theres no response yet
                     } else {
                       children = const <Widget>[
                         SizedBox(

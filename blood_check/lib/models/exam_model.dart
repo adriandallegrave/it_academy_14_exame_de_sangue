@@ -16,7 +16,8 @@ class Exam_Model {
   // receives the json list and transforms each obj into an Exam_Model
   static List<Exam_Model> examsFromJson(List<dynamic> json) {
     return List<Exam_Model>.from(json.map((x) => Exam_Model.fromJson(x)));
-  } 
+  }
+
   @override
   String toString() {
     return 'Exam{id: $id, price: $price, description: $description, delivery_days: $delivery_days}';

@@ -1,10 +1,7 @@
-2021/12/14-13:10:24.100 541c Log #3: 9 ops saved to Table #7 OK
-2021/12/14-13:10:24.137 541c Archiving C:\Users\LETICI~1\AppData\Local\Temp\flutter_tools.5cfc913b\flutter_tools_chrome_device.bd810ea\Default\Site Characteristics Database/000003.log: OK
-2021/12/14-13:10:24.161 541c Log #6: 1 ops saved to Table #8 OK
-2021/12/14-13:10:24.165 541c Archiving C:\Users\LETICI~1\AppData\Local\Temp\flutter_tools.5cfc913b\flutter_tools_chrome_device.bd810ea\Default\Site Characteristics Database/000006.log: OK
-2021/12/14-13:10:24.186 541c Table #4: 9 entries OK
-2021/12/14-13:10:24.187 541c Table #6: 9 entries OK
-2021/12/14-13:10:24.187 541c Table #7: 9 entries OK
-2021/12/14-13:10:24.188 541c Table #8: 1 entries OK
-2021/12/14-13:10:24.243 541c Archiving C:\Users\LETICI~1\AppData\Local\Temp\flutter_tools.5cfc913b\flutter_tools_chrome_device.bd810ea\Default\Site Characteristics Database/MANIFEST-000001: OK
-2021/12/14-13:10:24.283 541c **** Repaired leveldb C:\Users\LETICI~1\AppData\Local\Temp\flutter_tools.5cfc913b\flutter_tools_chrome_device.bd810ea\Default\Site Characteristics Database; recovered 4 files; 1173 bytes. Some data may have been lost. ****
+2021/12/15-11:18:51.864 4a24 Reusing MANIFEST C:\Users\LETICI~1\AppData\Local\Temp\flutter_tools.c0577f3d\flutter_tools_chrome_device.435107d\Default\Site Characteristics Database/MANIFEST-000001
+2021/12/15-11:18:51.907 4a24 Recovering log #10
+2021/12/15-11:18:51.910 4a24 Reusing old log C:\Users\LETICI~1\AppData\Local\Temp\flutter_tools.c0577f3d\flutter_tools_chrome_device.435107d\Default\Site Characteristics Database/000010.log 
+2021/12/15-11:18:51.911 4a24 Delete type=0 #3
+2021/12/15-11:18:51.911 4a24 Delete type=2 #4
+2021/12/15-11:18:51.911 4a24 Delete type=2 #6
+2021/12/15-11:18:51.911 4a24 Delete type=0 #6
