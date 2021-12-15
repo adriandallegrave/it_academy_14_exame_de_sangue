@@ -93,7 +93,7 @@ public class RequestController : ControllerBase
                 RequestId = newRequest.RequestId
             };
             var newRequestExam = await _requestExamRepository.AddAsync(requestExam);
-        }  
-        return requestDTO;
+        }
+        return Created($"https://localhost:7288/api/request/", requestDTO);
     }
 }
