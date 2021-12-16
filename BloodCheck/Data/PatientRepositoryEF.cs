@@ -29,10 +29,10 @@ public class PatientRepositoryEF : IPatientRepository
         return await _context.Patients.ToListAsync();
     }
 
-    public async Task<Patient> AddAsync(PostPatientDTO postPatientDTO)
+    public async Task<Patient> AddAsync(Patient patient)
     {
-        var newPatient = await _context.Patients.AddAsync(postPatientDTO);
+        var newPatient = await _context.Patients.AddAsync(patient);
         await _context.SaveChangesAsync();
-        return newPatient;
+        return patient;
     }
 }

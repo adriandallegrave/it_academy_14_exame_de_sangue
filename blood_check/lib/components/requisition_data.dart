@@ -12,6 +12,7 @@ class RequisitionData extends StatefulWidget {
 }
 
 class _RequisitionDataState extends State<RequisitionData> {
+  var date = DateTime.now().toString();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -47,6 +48,8 @@ class _RequisitionDataState extends State<RequisitionData> {
                         icon: Icon(Icons.date_range),
                         hintText: 'dd/mm/yyyy',
                         labelStyle: TextStyle(color: Colors.grey)),
+                    enabled: false,
+                    initialValue: date,
                     keyboardType: TextInputType.datetime,
                   ),
                 ),

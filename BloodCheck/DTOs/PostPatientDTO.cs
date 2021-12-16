@@ -19,8 +19,8 @@ public class PostPatientDTO
 
     public PostPatientDTO(string name, string cpf, string phone)
     {
-        this.Name=name;
-        this.Cpf=cpf;
-        this.Phone=phone;
+        this.Name = name;
+        this.Cpf = cpf;
+        this.Phone = phone;
     }
 }

@@ -44,14 +44,22 @@ public class PatientController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> PostAsync([FromBody] PostPatientDTO postPatientDTO)
+    public async Task<ActionResult> PostAsync([FromBody] PatientDTO patientDTO)
     {
-        var patient = _patientRepository.GetAsync(postPatientDTO.Cpf);
-        if (patient is not null)
+        var oldPatient = await _patientRepository.GetAsync(patientDTO.Cpf);
+        if (oldPatient is not null)
         {
             return BadRequest();
         }
-        _patientRepository.AddAsync(postPatientDTO);
-        return Ok();
+
+        var newPatient = new Patient()
+        {
+            Name = patientDTO.Name,
+            Cpf = patientDTO.Cpf,
+            Phone = patientDTO.Phone,
+        };
+
+        await _patientRepository.AddAsync(newPatient);
+        return Created($"https://localhost:7288/api/patient/", patientDTO);
     }
 }

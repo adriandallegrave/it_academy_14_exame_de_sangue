@@ -7,4 +7,10 @@ class ApiService {
     final response = await http.get(Utility.generateUri('patient'));
     return json.decode(response.body);
   }
+
+  // TODO: encode patient data into json request body
+  // static Future<dynamic> postPatient() async {
+  //   final response = await http.post(Utility.generateUri('patient'));
+  //   return json.decode(response.body);
+  // }
 }

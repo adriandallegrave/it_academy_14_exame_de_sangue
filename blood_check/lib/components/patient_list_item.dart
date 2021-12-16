@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:blood_check/providers/patient_provider.dart';
 
 class PatientListItem extends StatefulWidget {
-  final String name;
+  final String? name;
 
   const PatientListItem(this.name);
 

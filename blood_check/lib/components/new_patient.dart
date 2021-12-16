@@ -101,6 +101,7 @@ class _NewPatientState extends State<NewPatient> {
                   onPressed: () {
                     // Save the new pacient
                     debugPrint('Received click');
+
                     // Create the patient model and extract the info from the TextFields
                     //Patient_Model newpacient = Patient_Model(id, name, cpf, phone)
                   },
