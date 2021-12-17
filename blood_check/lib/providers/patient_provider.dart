@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:html';
 import 'package:blood_check/providers/utility.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,8 +10,8 @@ class ApiService {
   }
 
   // TODO: encode patient data into json request body
-  // static Future<dynamic> postPatient() async {
-  //   final response = await http.post(Utility.generateUri('patient'));
-  //   return json.decode(response.body);
-  // }
+  static Future<dynamic> postPatient(Map<String, dynamic> body) async {
+    final response = await http.post(Utility.generateUri('patient'), body: body);
+    return json.decode(response.body);
+  }
 }

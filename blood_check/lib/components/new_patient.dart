@@ -13,6 +13,11 @@ class NewPatient extends StatefulWidget {
 }
 
 class _NewPatientState extends State<NewPatient> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _cpfController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController(); 
+
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -43,6 +48,7 @@ class _NewPatientState extends State<NewPatient> {
                     ),
                   ),
                   child: TextFormField(
+                    controller: _nameController,
                     decoration: const InputDecoration(
                         border: InputBorder.none,
                         icon: Icon(Icons.person),
@@ -63,6 +69,7 @@ class _NewPatientState extends State<NewPatient> {
                     ),
                   ),
                   child: TextFormField(
+                    controller: _cpfController,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                       icon: Icon(Icons.document_scanner_outlined),
@@ -83,6 +90,7 @@ class _NewPatientState extends State<NewPatient> {
                     ),
                   ),
                   child: TextFormField(
+                    controller: _phoneController,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                       icon: Icon(Icons.phone_callback_outlined),
@@ -103,7 +111,9 @@ class _NewPatientState extends State<NewPatient> {
                     debugPrint('Received click');
 
                     // Create the patient model and extract the info from the TextFields
-                    //Patient_Model newpacient = Patient_Model(id, name, cpf, phone)
+                    Patient_Model newpacient = Patient_Model(name: _nameController.text, cpf: _cpfController.text, phone: _phoneController.text);
+                    newpacient.save();
+
                   },
                   child: const Text('Salvar Paciente'),
                 )

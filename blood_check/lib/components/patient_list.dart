@@ -20,11 +20,9 @@ class _PatientListState extends State<PatientList> {
     return FutureBuilder(
             future: getPatientsData(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasDa  ta) {
+                if (snapshot.hasData) {
                 return Container(
-                  margin: const EdgeInsets.onl
-                  
-                  y(
+                  margin: const EdgeInsets.only(
                       top: 16, left: 16, right: 16, bottom: 0),
                   decoration: const BoxDecoration(
                     color: kSecondColor,
@@ -35,7 +33,6 @@ class _PatientListState extends State<PatientList> {
                   ),
                   child: Expanded(
                     child: ListView(
-                      
                       
                       padding: const EdgeInsets.only(
                           left: 8, right: 8, top: 8, bottom: 0),
@@ -49,7 +46,7 @@ class _PatientListState extends State<PatientList> {
                     ),
                     ),    
                 );
-                } e  lse if (snapshot.hasError) {
+                } else if (snapshot.hasError) {
                 return Container();
           }     else {
                 return const Center(
