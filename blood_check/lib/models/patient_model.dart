@@ -1,5 +1,3 @@
-
-
 import 'package:blood_check/providers/patient_provider.dart';
 
 class Patient_Model {
@@ -16,12 +14,8 @@ class Patient_Model {
   }
 
   Future<void> save() async {
-    Map<String, dynamic> body = {
-      "name": name, 
-      "cpf": cpf, 
-      "phone": phone
-    };
-    
-    ApiService.postPatient(body);
+    Map<String, dynamic> body = {"name": name, "cpf": cpf, "phone": phone};
+
+    await ApiService.postPatient(body);
   }
 }

@@ -15,8 +15,7 @@ class NewPatient extends StatefulWidget {
 class _NewPatientState extends State<NewPatient> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _cpfController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController(); 
-
+  final TextEditingController _phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -111,10 +110,18 @@ class _NewPatientState extends State<NewPatient> {
                     debugPrint('Received click');
 
                     // Create the patient model and extract the info from the TextFields
-                    Patient_Model newpacient = Patient_Model(name: _nameController.text, cpf: _cpfController.text, phone: _phoneController.text);
-                    newpacient.save();
+                    Patient_Model newpatient = Patient_Model(
+                        name: _nameController.text,
+                        cpf: _cpfController.text,
+                        phone: _phoneController.text);
 
+                    debugPrint(newpatient.name);
+                    debugPrint(newpatient.cpf);
+                    debugPrint(newpatient.phone);
+
+                    newpatient.save();
                   },
+                  //enabled:
                   child: const Text('Salvar Paciente'),
                 )
               ],
