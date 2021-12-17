@@ -9,9 +9,10 @@ class ApiService {
     return json.decode(response.body);
   }
 
-  // TODO: encode patient data into json request body
   static Future<dynamic> postPatient(Map<String, dynamic> body) async {
-    final response = await http.post(Utility.generateUri('patient'), body: body);
+    final response = await http.post(Utility.generateUri('patient'),
+        headers: <String, String>{'Content-Type': 'application/json'},
+        body: jsonEncode(body));
     return json.decode(response.body);
   }
 }
